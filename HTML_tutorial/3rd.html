@@ -3,9 +3,79 @@
     <head>
         <meta charset="utf-8" />
         <title>3rd lecture</title>
+        <style type="text/css">
+            #ID001{
+                height: 1000px;
+                background: skyblue;
+            }
+            #ID002{
+                height: 1000px;
+                background: yellowgreen;
+            }
+            mytag{
+                display: block;
+                font-size: 2em;
+                margin-block-start: 0.67em;
+                margin-block-end: 0.67em;
+                margin-inline-start: 0px;
+                margin-inline-end: 0px;
+                font-weight: bold;
+            }               
+            
+        </style>
     </head>
 
     <body>
-        
+        <!--form：表單標籤-->
+        <!--1.action:將表單數據提交至什麼地址-->
+        <!--2.提交的方法：get/post-->
+        <!--post不展示表單數據，安全但效率相對低-->
+        <!--表單數據提交量相比get更大（>1Mb），可以支持圖片等-->
+        <form action="" method="post">
+            <!--input標籤屬性-->
+            <!--1.輸入標籤類型：text/password/submit-->
+            <!--2.提交數據的名稱：name-->
+            <!--3.輸入框的值：value-->
+            <!--4.預置文字：placeholder-->
+            <input type="text" name="username" id="" value="username"/>
+            <input type="password" name="password" id="" value=""  placeholder="Type in password" />
+            <input type="submit" value="Log In" />
+        </form>
+        <!--get提交表單數據，但是返回當前頁面-->
+        <!--表單數據都顯示在鏈接地址上，附在鏈接地址之後發送給服務器-->
+        <!--不安全，但效率高-->
+        <form action="http://www.google.com/search" method="get">
+            <!--input標籤屬性-->
+            <!--1.輸入標籤類型：text/password/submit-->
+            <!--2.提交數據的名稱：name-->
+            <!--3.輸入框的值：value-->
+            <!--4.預置文字：placeholder-->
+            <input type="text" name="q" id="" placeholder="Type in what to search" value="" />
+            <input type="submit" value="Search" />
+        </form>
+
+
+        <!--頁面外跳轉-->
+        <a href="http://www.google.com">Google</a>
+        <!--頁面內跳轉-->
+        <a href="#ID001">Part 1</a>
+        <a href="#ID002">Part 2</a>
+        <!--div: 容器標籤-->
+        <div id="ID001">
+            <h1>Head1</h1>
+            <img src="C++ hard parts.jpg"/>
+            <p>Content1</p>
+        </div>
+
+        <div id="ID002">
+            <h1>Head2</h1>
+            <img src="C++ hard parts.jpg"/>
+            <p>Content2</p>
+        </div>
+
+        <mytag>
+            <p>Tag can be customized. But no default style can be applied.</p>
+        </mytag>
+
     </body>
 </html>
