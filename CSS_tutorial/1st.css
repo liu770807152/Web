@@ -6,3 +6,13 @@
     color: chartreuse;
     font-size: 30px;
 }
+/* 更改複雜度也可以提升優先級，body裏的d1 */
+body #d1{
+    color: green;
+    font-size: 30px;
+}
+/* 既是div又是d1，複雜度最高，優先級也最高 */
+div#d1{
+    color: orange;
+    font-size: 30px;
+}
