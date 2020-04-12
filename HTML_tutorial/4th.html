@@ -3,9 +3,63 @@
     <head>
         <meta charset="utf-8" />
         <title>4th lecture</title>
+        <style>
+            img{
+                width: 400px;
+                height: 400px;
+                display: block;
+                margin: 0 auto;
+                transition: all 3s;
+            }
+            img:hover{
+                -webkit-filter: none;
+            }
+            .img1{
+                /* 1是全灰 */
+                -webkit-filter: grayscale(1);
+            }
+            .img2{
+                /* 1是正常亮度 */
+                -webkit-filter: brightness(2);
+            }
+            .img3{
+                /* 1是完全老照片的黃度 */
+                -webkit-filter: sepia(1);
+            }
+            .img4{
+                /* 模糊以px爲單位 */
+                -webkit-filter: blur(5px);
+            }
+            .img5{
+                /* 1是正常飽和度 */
+                -webkit-filter: contrast(5);
+            }
+            .img6{
+                /* 膠片底色效果 */
+                -webkit-filter: invert(1);
+            }
+            .img7{
+                /* deg是單位 */
+                -webkit-filter: hue-rotate(180deg);
+            }
+            .img8{
+                -webkit-filter: brightness(10) grayscale(1) blur(4px);
+                transition: all 10s;
+            }
+            .img8:hover{
+                -webkit-filter: brightness(1) grayscale(0);
+            }
+        </style>
     </head>
 
     <body>
-        
+        <img class="img1" src="giphy.gif" >
+        <img class="img2" src="giphy.gif" >
+        <img class="img3" src="giphy.gif" >
+        <img class="img4" src="giphy.gif" >
+        <img class="img5" src="giphy.gif" >
+        <img class="img6" src="giphy.gif" >
+        <img class="img7" src="giphy.gif" >
+        <img class="img8" src="giphy.gif" >
     </body>
 </html>
