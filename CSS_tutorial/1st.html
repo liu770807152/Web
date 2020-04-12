@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>5th lecture</title>
+        <style type="text/css">
+        /* 被.css覆蓋了 */
+            #d1{
+                color: aqua;
+                font-size: 100px;
+            }
+            #d5{
+                color: aqua;
+                font-size: 100px;
+            }
+            div{
+                color: red /*加上!important之後全部字體變紅，因爲其優先級被人爲提高*/;
+                font-size: 200px;
+            }
+        </style>
+        <link rel="stylesheet" type="text/css" href="1st.css" />
+    </head>
+
+    <body>
+        <!--優先級最高的樣式-->
+        <div id="d2" style="color: blue; font-size: 50px;">
+            <p>Hello world!</p>
+        </div>
+        <!--無style的，同樣的選擇器，誰在最後誰最優先-->
+        <!--關於選擇器的優先級：繼承的樣式 < 瀏覽器模式的樣式 < 標籤樣式 < class樣式 < id樣式 < style屬性樣式-->
+        <div id="d1">
+            <p>Hello world!</p>
+        </div>
+        <div id="d3">
+            <p>Hello world!</p>
+        </div>
+        <div>
+            <p>Hello world!</p>
+        </div>
+        <div id="d5">
+            <p>Hello world!</p>
+        </div>
+    </body>
+</html>
