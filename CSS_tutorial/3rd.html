@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>3rd lecture</title>
+        <style type="text/css">
+            .content{
+                width: 600px;
+            }
+            img{
+                float: left;
+            }
+
+            .parent{
+                width: 600px;
+                /* 1.一定要指定高度！否則會有高度塌陷問題！*/
+                /*height: 600px;*/
+                margin: 0 auto;
+                background: lightcyan;
+            }
+            .child{
+                display: inline-block;
+                /*200=600/3，應該要剛好放下，但實際上有一個'/n'的間隔*/
+                width: 200px; 
+                height: 200px;
+                background: skyblue;
+                /* 因此需要利用浮動來消滅間隔 */
+                float: left;
+            }
+            .clear{
+                /* 2.或者在這裏清楚浮動（萬能方法） */
+                clear: both;
+            }
+            /* 3.利用僞元素清楚浮動（最佳方法） */
+            .parent:after{
+                content: "";
+                display: block;
+                clear: both;
+            }
+            /* 4.自動化清楚浮動方法 */
+            .clear:after{
+                content: "";
+                display: block;
+                clear: both;
+            }
+        </style>
+    </head>
+
+    <body>
+        <!--浮動可以使元素脫離正常的文檔流，向左或者向右，
+            靠近父元素或其他同樣設置了浮動的元素的邊緣靠攏-->
+        <!--浮動的三大作用：-->
+        <!--1.解決文字包圍圖片的問題-->
+        <!--2.解決莫名其妙的間隔問題-->
+        <!--3.浮動可以向左、向右進行排版對齊-->
+
+        <div class="content">
+            <img src="../HTML_tutorial/giphy.gif" >
+            Some contents here.Some contents here.Some contents here.
+            Some contents here.Some contents here.Some contents here.
+            Some contents here.Some contents here.Some contents here.
+            Some contents here.Some contents here.Some contents here.
+            Some contents here.Some contents here.Some contents here.
+            Some contents here.Some contents here.Some contents here.
+            Some contents here.Some contents here.Some contents here.
+            Some contents here.Some contents here.Some contents here.
+            Some contents here.Some contents here.Some contents here.
+            Some contents here.Some contents here.Some contents here.
+            Some contents here.Som2.或者在這裏清楚浮動me contents here.Some contents here.
+        </div>
+
+        <!--div.parent>div.child*3-->
+        <div class="parent">
+            <div class="child"></div>
+            <div class="child"></div>
+            <div class="child"></div>
+            <!--2.或者在這裏加一個div清楚浮動-->
+            <!--<div class="clear"></div>-->
+        </div>
+        <div>helloworld</div>
+
+        <!--在需要浮動的類後面加一個clear類，自動清楚浮動-->
+        <div class="parent clear">
+            <div class="child"></div>
+            <div class="child"></div>
+        </div>
+        <div>helloworld</div>
+    </body>
+</html>
