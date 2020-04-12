@@ -1,0 +1,77 @@
+<!Doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>2nd part2 lecture</title>
+        <style type="text/css">
+            /* 子元素選擇器，數字代表第幾個 */
+            li:nth-child(1){
+                background: pink;
+            }
+            li:nth-child(2){
+                background: skyblue;
+            }
+            li:last-child{
+                background: brown;
+            }
+            /* 所有子類（包括child & grandchild）的屬性繼承自父類 */
+            .parent div{
+                width: 100px;
+                height: 100px;
+                background: yellow;
+            }
+            /* 只有parent的直接子類（child）繼承parent的屬性 */
+            .parent>div{
+                width: 100px;
+                height: 100px;
+                background: purple;
+            }
+            /* d1和它後面的一個元素 */
+            .d1+div{
+                width: 150px;
+                height: 150px;
+                font-size: 50px;
+                background: orange;
+            }
+            /* d1和它後面的所有元素 */
+            .d2~div{
+                width: 200px;
+                height: 150px;
+                font-size: 80px;
+                background: grey;
+            }
+        </style>
+    </head>
+
+    <body>
+        <ul>
+            <li>news1</li>
+            <li>news2</li>
+            <li>news3</li>
+            <li>news4</li>
+            <li>news5</li>
+            <li>news6</li>
+            <li>news7</li>
+            <li>news8</li>
+            <li>news9</li>
+            <li>news10</li>
+        </ul>
+
+        <!--.parent>.child>.grandchild-->
+        <div class="parent">
+            <div class="child">
+                <div class="grandchild">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="d1"></div>
+        <div>hello world</div>
+
+        <div class="d2"></div>
+        <div>hello world</div>
+        <div class="d3"></div>
+        <div>hello world</div>
+    </body>
+</html>
