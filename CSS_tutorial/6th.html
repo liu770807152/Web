@@ -4,12 +4,59 @@
         <meta charset="utf-8">
         <title>6th lecture</title>
         <style type="text/css">
-
+            #d1{
+                width: 100px;
+                height: 100px;
+                background: skyblue;
+                margin: 50px auto;
+                /* 移動:translate(x,y), x往右, y往下 */
+                transform: translate(200px， 500px);
+                /* transform: translateX(300px) translateY(400px); */
+                /* 中心順時針旋轉 */
+                transform: rotate(30deg);
+            }
+            #d2{
+                width: 100px;
+                height: 100px;
+                background: red;
+                margin: 250px auto;
+                
+                /* 3d旋轉 */
+                transform: rotateY(45deg);
+                transform: rotateZ(45deg);
+            }
+            body{
+                /* 設置透視點 */
+                perspective: 1000px;
+            }
+            #d3{
+                width: 100px;
+                height: 100px;
+                background: purple;
+                margin: 300px auto;
+                /* 透視變換，數值越大越放大 */
+                transform: translateZ(300px);
+            }
+            #d4{
+                width: 100px;
+                height: 100px;
+                background: purple;
+                margin: 300px auto;
+            }
         </style>
     </head>
 
     <body>
-        <div>
+        <div id="d1">
+            
+        </div>
+        <div id="d2">
+            
+        </div>
+        <div id="d3">
+            
+        </div>
+        <div id="d4">
             
         </div>
 

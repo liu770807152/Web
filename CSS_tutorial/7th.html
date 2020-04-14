@@ -4,14 +4,100 @@
         <meta charset="utf-8">
         <title>7th lecture</title>
         <style type="text/css">
+            .d1{
+                width: 300px;
+                height: 300px;
+                border: 1px solid #999;
+            }
+            #yellow:checked~.d1{
+                background: yellow;
+            }
+            #blue:checked~.d1{
+                background: blue;
+            }
+            #red:checked~.d1{
+                background: red;
+            }
+            #d2{
+                width: 300px;
+                height: 300px;
+                border: 1px solid #999;
+            }
+            #yellow:checked~#d2{
+                background: yellow;
+            }
+            #blue:checked~#d2{
+                background: blue;
+            }
+            #red:checked~#d2{
+                background: red;
+            }
 
+            .btn{
+                display: inline-block;
+                width: 300px;
+                height: 100px;
+                margin: 50px;
+                text-align: center;
+                line-height: 100px;
+                border: 1px solid #999;
+                border-radius: 20px;
+                box-shadow: 0 0 0px #333;
+                transition: all 0.5s;
+            }
+            .btn:hover{
+                box-shadow: 0 0 30px #333;
+            }
         </style>
     </head>
 
     <body>
-        <div>
-            
-        </div>
+        <form action="" method="post">
+            <input type="text" name="username" id="" value="" />
+            <input type="password" name="password" id="" value="" />
+            <hr >
+            <!--單選框-->
+            male
+            <input type="radio" name="gender" id="" value="男" />
+            female
+            <input type="radio" name="gender" id="" value="女" />
+            <hr >
+
+            <!--複選框：同一個選項，name值要相同，但可以多選-->
+            <h3>What's your favorite city?</h3>
+            Canton
+            <input type="checkbox" name="city" id="" value="Canton" />
+            Beijing
+            <input type="checkbox" name="city" id="" value="Beijing" />
+            Shanghai
+            <input type="checkbox" name="city" id="" value="Shanghai" />
+            Shenzhen
+            <input type="checkbox" name="city" id="" value="Shenzhen" />
+
+            <hr >
+            <!--label綁定輸入框，for綁定選項卡的id-->
+            <label class="btn" for="yellow">
+                Choose yellow
+            </label>
+            <label class="btn" for="blue">
+                Choose blue
+            </label>
+            <label class="btn" for="red">
+                Choose red
+            </label>
+            <hr >
+
+            <h3>What's your favorite color</h3>
+            <!--hidden隱藏選項框(hidden="hidden")-->
+            <input type="radio" name="color" id="yellow" value="yellow" />
+            <input type="radio" name="color" id="blue" value="blue" />
+            <input type="radio" name="color" id="red" value="red" />
+
+            <div class="d1"></div>
+            <div id="d2"></div>
+
+            <input type="submit" value="register" />
+        </form>
 
     </body>
 </html>
