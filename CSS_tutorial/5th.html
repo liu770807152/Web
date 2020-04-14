@@ -4,13 +4,41 @@
         <meta charset="utf-8">
         <title>5th lecture</title>
         <style type="text/css">
-
+            #d1{
+                width: 100px;
+                height: 100px;
+                background: skyblue;
+                /* 綜合性過渡效果 */
+                /* transition: width 2s; */
+                /* 設置過渡效果的屬性, 可設置多個值: width, background
+                    也可以一次性設置（transition-property:all） */
+                transition-property: width, background;
+                /* 時間一一對應 */
+                transition-duration: 2s,10s;
+                /* 過渡動畫變化的速度：先慢後快最後慢（默認） */
+                transition-timing-function: ease;
+                /* 過渡動畫變化的速度：平穩 */
+                transition-timing-function: linear;
+                /* 過渡動畫變化的速度：逐漸變快 */
+                transition-timing-function: ease-in;
+                /* 過渡動畫變化的速度：逐漸變慢 */
+                transition-timing-function: ease-out;
+                /* 過渡動畫變化的速度：自定義 */
+                transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+                /* 設置延時時間 */
+                transition-delay: 1s;
+            }
+            #d1:hover{
+                width: 800px;
+                height: 100px;
+                background: orange;
+            }
         </style>
     </head>
 
     <body>
-        <div>
-            
+        <div id="d1">
+
         </div>
 
     </body>
