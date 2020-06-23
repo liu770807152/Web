@@ -23,3 +23,14 @@ var o3 = {
 console.log(o1.fn()); //o1
 console.log(o2.fn()); //11行决定是o1
 console.log(o3.fn()); //undefined
+
+
+async function getData() {
+    let promise = new Promise((resolve, reject) => {
+        setTimeout(() => resolve('done'), 3000);
+    });
+
+    let result = await Promise;
+    console.log(result);
+}
+getData();
