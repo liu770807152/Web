@@ -25,3 +25,8 @@ console.log("外部",c);
 
 
 //2.
+function sum(a = 1, b = 3) {
+    return a + b;
+}
+console.log(sum(b=2, undefined)); //X
+console.log(sum(undefined, 2));  //V
