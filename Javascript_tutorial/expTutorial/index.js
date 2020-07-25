@@ -68,7 +68,7 @@ app.listen(3000, () => {
 
 // npm init -y
 // npm i xxxxx
-// npm i -D xxxx
+// npm i -D xxxx   装到dev dependency
 // npm run xxx
 // express
 
