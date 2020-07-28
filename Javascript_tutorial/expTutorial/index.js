@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+// equivalent to "app = require("express")();"
 
 // localhost:3000/greeting/mason?title=mr
 // timeMiddleware -> middleware -> route handler
