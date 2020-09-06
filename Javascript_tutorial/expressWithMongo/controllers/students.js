@@ -7,7 +7,7 @@ function getStudent(req, res) {
 }
 
 function getAllStudent(req, res) {
-    res.json([]);
+    return res.json([]);
 }
 
 function updateStudent(req, res) {

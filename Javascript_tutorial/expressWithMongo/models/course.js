@@ -1,4 +1,4 @@
-const mongoose = require('moogoose');
+const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
     // course code
@@ -10,12 +10,30 @@ const schema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    code: {
+        type: String,
+        required: true,
+    },
     description: {
         type: String,
         default: 'This is default info',
     },
+    __v: {
+        type: Number,
+        select: false,
+    },
+}, {
+    toJSON: {
+      virtuals: true,
+    },
+    id: false,
+    timestamps: true
+  });
+
+schema.virtual('virtual').get(function() {
+    return Math.random(this._id);
 });
 
-const Model = mongoose.model('Course', schema);
+const model = mongoose.model('Course', schema);
 
-module.exports = Model;
+module.exports = model;
