@@ -14,7 +14,7 @@ const calendar = {
     }
   };
   
-  // calendar.normal();
+  calendar.normal();
   calendar.arrow.bind({});
   
   // apply, bind, call
