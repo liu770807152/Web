@@ -1,3 +1,4 @@
+"use strict";
 const fs = require('fs');
 
 // 正常情况下, 应该是异步非阻塞操作, 而不是sync阻塞操作
