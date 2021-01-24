@@ -1,7 +1,7 @@
 const http = require('http');
 const fs = require('fs');
 
-const homePage = fs.readFileSync('./index.html');
+const homePage = fs.readFileSync('./text.txt');
 
 const server = http.createServer((req, res) => {
   console.log(req.url);
