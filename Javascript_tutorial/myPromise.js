@@ -144,13 +144,14 @@ function resolvePromise(promise2, x, resolve, reject) {
  3. Error
  4. 链式.then()
  5. setTimeout()嵌套MyPromise
+ 6. pending的Promise中止then()链条
  */
 let promise1 = new MyPromise((resolve, reject) => {
   resolve('Promise1');
 });
 promise1.then((value) => {
-  return new Error('Error');
-  // return Promise.resolve(value + ' -> promise2');
+  // return new Error('Error');
+  return Promise.resolve(value + ' -> promise2');
   // return "A string";
   // return new MyPromise((resolve, reject) => {
   //   setTimeout(() => {
@@ -161,7 +162,10 @@ promise1.then((value) => {
   // });
 }, (reason) => {
   return reason;
-}).then().then().then().then()
+}).then().then().then().then((value) => {
+  console.log(value);
+  // return new MyPromise(() => {});
+})
 .then((value) => {
   console.dir(value);
 })
