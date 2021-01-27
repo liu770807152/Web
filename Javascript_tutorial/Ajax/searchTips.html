@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SearchTips</title>
+</head>
+<body>
+  <input type="text" id="search">
+  <ul id="result"></ul>
+
+  <script type="module">
+    import { ajax, get, getJSON, post } from "./index.js";
+    const url = "./data.json";
+    const searchInput = document.querySelector("#search");
+    const resultList = document.querySelector("#result");
+    
+    const handleInput = () => {
+      if (searchInput.value.trim() !== "") {
+        getJSON(`${url}${searchInput.value}`).then(res => {
+          let html = "";
+          for (const item of res.data) {
+            html += `<li>${item.word}</li>`;
+          }
+
+          resultList.innerHTML = html;
+          resultList.style.display = "";
+        }).catch(err => {
+          console.warn(err);
+        });
+      } else {
+        resultList.innerHTML = "";
+        resultList.style.display = "none";
+      }
+    };
+
+    // 防抖: 输入间隔>0.4s才会发送请求
+    let timer = null;
+    searchInput.addEventListener("input", () => {
+      if (timer) {
+        clearTimeout(timer);
+      }
+      timer = setTimeout(handleInput, 400);
+      
+    });
+
+  </script>
+</body>
+</html>
