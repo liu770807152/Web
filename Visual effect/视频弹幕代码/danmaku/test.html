@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我是程序汪-弹幕</title>
+    
+    <style>
+        .wang-demo {
+            width: 400px;
+            height: 220px;
+            margin: 0 auto;
+        }
+        
+        #wang-container__wrapper {
+            width: 100%;
+            height: 220px;
+            position: relative;
+            overflow: hidden;
+            background: black;
+        }
+        
+        #wang-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 80px;
+            cursor: default;
+            user-select: none;
+        }
+        
+        .wang-barrage-item {
+            position: absolute;
+            top: 0;
+            left: 100%;
+            white-space: nowrap;
+            cursor: pointer;
+            color: #fff;
+            z-index: 3;
+        }
+        
+        #video {
+            position: absolute;
+            z-index: 2;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wang-demo">
+        <div id="wang-container__wrapper">
+            <!-- 载入视频 -->
+            <video id="video" width="100%" src="./static/【清晰 480P】 有这4种现象的公司10年程序汪负责的告诉你请早点准备离职.mp4" controls></video>
+
+            <!-- 弹幕容器 -->
+            <div id="wang-container"></div>
+        </div>
+
+        <!-- 弹幕发射 -->
+        <div class="wang-manage">
+            <div>
+                <input type="text" id="wang-manage-input">
+                <button id="wang-manage-btn">发射弹幕</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // step 1 设计弹幕类
+        class Barrage {
+
+            /**
+            * 用于计算随机出现偏移量
+            */
+            static random(start, end) {
+
+                // 从其实位置开始到目标位置的随机数字
+                return start + (Math.random() * (end - start));
+            }
+
+
+            /**
+            * 实现动画
+            */
+            static animate(obj) {
+                // 先移动一次
+                Barrage.move(obj);
+
+                // 一般的动画情况
+                if (Math.abs(obj.distance) < obj.width + obj.left) {
+                    obj.timer = requestAnimationFrame(function () {
+
+                        // 递归调用自身执行动画
+                        Barrage.animate(obj);
+                    })
+                } else {
+
+                    // 到了左边的边界，清楚弹幕
+                    cancelAnimationFrame(obj.timer);
+                    obj.divNode.parentNode.removeChild(obj.divNode);
+                    container.barrageArray.splice(container.barrageArray.indexOf(obj), 1);
+                }
+            }
+
+            static move(obj) {
+                // 距离 --，通过transform来移动
+                obj.distance--;
+                obj.divNode.style.transform = 'translateX(' + obj.distance + 'px)';
+                obj.divNode.style.webkitTransform = 'translateX(' + obj.distance + 'px)';
+            }
+            
+            constructor({text}) {
+                if (!text) {
+                    throw Error('init error');
+                }
+                
+                this.text = text;
+                this.inNewMsg = false;
+                this.timer = null;
+                this.divNode = null;
+                this.width = 0;
+            }
+            
+            /**
+            * 将弹幕挂载到容器上
+            */
+            append(container) {
+                if (!container) {
+                    throw Error('please specify the cotainer')
+                }
+
+                this.__init(container);
+                container.barrageArray.push(this);
+            }
+            
+            setNewMsg() {
+                this.inNewMsg = true;
+            }
+            
+            __init(container) {
+                
+                // 初始化弹幕DOM
+                let divNode = document.createElement('div');
+                this.divNode = divNode;
+                let msg = this.text;
+
+                divNode.innerHTML = msg;
+                divNode.classList.add('wang-barrage-item');
+                container.$container.appendChild(divNode);
+                
+                // 计算弹幕的初始位置
+                
+                // 左边偏一个屏幕到两个屏幕之间的随机数
+                let barrageOffsetLeft = Barrage.random(container.barrageWrapperWidth, container.barrageWrapperWidth * 2);
+                
+                // 如果是刚刚新生成的，直接从一个屏幕的边缘开始生成
+                barrageOffsetLeft = this.inNewMsg ? container.barrageWrapperWidth : barrageOffsetLeft;
+                
+                // 底部留一定的宽度40px，因为播放器最下面是一个控制器
+                let barrageOffsetTop = Barrage.random(10, container.barrageWrapperHeight - 80) || 10;
+
+                // 随机取一种颜色(类似数组种随机取一个元素)
+                let barrageColor = container.barrageColorArray[Math.floor(Math.random() * (container.barrageColorArray.length))] || '#fff';
+                
+                // 设置属性
+                divNode.style.left = barrageOffsetLeft + 'px';
+                divNode.style.top = barrageOffsetTop + 'px';
+                divNode.style.color = barrageColor;
+                
+                // 初始位置为0
+                this.distance = 0;
+
+                // 由于默认宽度为auto，所以要这样计算获得
+                this.width = ~~window.getComputedStyle(divNode).width.replace('px', '');
+
+                // 记录一开始进来的向左偏移量
+                this.left = barrageOffsetLeft;
+
+                this.timer = null;
+                
+                // animate start
+                Barrage.animate(this);
+
+
+                // 鼠标移动上去，弹幕滞留
+                divNode.onmouseenter = () => {
+                    cancelAnimationFrame(this.timer);
+                }
+
+                divNode.onmouseleave = () => {
+                    Barrage.animate(this);
+                }
+            }
+            
+            stop() {
+                cancelAnimationFrame(this.timer);
+            }
+        }
+
+        // step 2 设计容器类
+        class BarrageContainer {
+            $container = null;
+            $wrapper = null;
+
+            barrageColorArray = [];
+            barrageArray = [];
+            
+            constructor(wrapperId, containerId) {
+                // 获取dom
+                this.$wrapper = document.querySelector(wrapperId);
+                this.$container = document.querySelector(containerId);
+
+                if (!this.$wrapper || !this.$container) {
+                    throw Error('no such css selecotr');
+                }
+
+                // 计算容器的宽高
+                this.barrageWrapperWidth = ~~window.getComputedStyle(this.$wrapper).width.replace('px', '');
+                this.barrageWrapperHeight = ~~window.getComputedStyle(this.$wrapper).height.replace('px', '');
+            }
+            
+            setColor(arr) {
+                this.barrageColorArray = arr;
+            }
+            
+            stopAnimation() {
+                this.barrageArray.forEach(barrage => {
+                    barrage.stop();
+                })
+            }
+            
+            recover() {
+                this.barrageArray.forEach(barrage => {
+                    Barrage.animate(barrage);
+                })
+            }
+        }
+    
+        // step 3 实例化
+        const container = new BarrageContainer('#wang-container__wrapper', '#wang-container');
+        container.setColor(['red', '#ffffff']);
+        
+        // 获取弹幕发射的DOM
+        const input = document.querySelector('#wang-manage-input');
+        const btn = document.querySelector('#wang-manage-btn');
+        
+        btn.onclick = function () {
+            let temp = new Barrage({
+                text: input.value
+            });
+            input.value = '';
+            temp.setNewMsg();
+            temp.append(container);
+        }
+        
+        
+        // step 4 与视频联动
+        
+        const video = document.querySelector('#video');
+        
+        // mock
+        // 模拟后端获取数据
+        function fetchData() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve([
+                        { text: 'bilibili 干杯' },
+                        { text: '下次一定' },
+                    ])
+                }, 100);
+            })
+        }
+        
+        video.onplay = function() {
+            
+            // 之前有暂停先恢复 
+            container.recover();
+            
+            clearInterval(video.timer);
+            
+            fetchData().then(data => {
+                data.map(msg => {
+                    let temp = new Barrage({
+                        text: msg.text
+                    });
+                    temp.append(container);
+                })
+            })
+            // 轮询
+            video.timer = setInterval(() => {
+                fetchData().then(data => {
+                    data.map(msg => {
+                        let temp = new Barrage({
+                            text: msg.text
+                        });
+                        temp.append(container);
+                    })
+                })
+
+                // 这边可以实现弹幕密度的更改
+            }, 3000);
+        }
+        
+        video.onpause = function() {
+            clearInterval(video.timer);
+            container.stopAnimation();
+        }
+    </script>
+</body>
+
+</html>

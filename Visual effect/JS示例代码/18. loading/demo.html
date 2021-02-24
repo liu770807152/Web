@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background:darkturquoise;
+        }
+        .loader {
+            width: 150px;
+            height: 150px;
+            /* border: 1px solid red; */
+            margin: 200px auto;
+        }
+        svg {
+            fill: none;
+        }
+        .load {
+            stroke-width: 20px;
+            stroke-dasharray: 570;
+            transform-origin: center center;
+        }
+
+        .one {
+            stroke: red;
+            animation: load 1.5s infinite;
+        }
+
+        .two {
+            stroke: yellow;
+            animation: load 1.5s infinite;
+            animation-delay: 0.1s;
+        }
+
+        .three {
+            stroke: blue;
+            animation: load 1.5s infinite;
+            animation-delay: 0.2s;
+        }
+
+        .point1 {
+            fill: red;
+            animation: bounce 1s infinite ease-in-out;
+        }
+
+        .point2 {
+            fill: yellow;
+            animation: bounce 1s infinite ease-in-out;
+            animation-delay: 0.1s;
+        }
+
+        .point3 {
+            fill: blue;
+            animation: bounce 1s infinite ease-in-out;
+            animation-delay: 0.2s;
+        }
+
+        @keyframes load {
+            0% {
+                stroke-dashoffset: 570;
+            }
+
+            50% {
+                stroke-dashoffset: 530;
+            }
+
+            100% {
+                stroke-dashoffset: 570;
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="loader">
+        <svg viewBox="0 0 120 120" width="135" height="135">
+            <circle class="load one" cx="60" cy="60" r="40"></circle>
+            <circle class="load two" cx="60" cy="60" r="40"></circle>
+            <circle class="load three" cx="60" cy="60" r="40"></circle>
+            <g>
+                <circle class="point point1" cx="45" cy="70" r="5"></circle>
+                <circle class="point point2" cx="60" cy="70" r="5"></circle>
+                <circle class="point point3" cx="75" cy="70" r="5"></circle>
+            </g>
+        </svg>
+    </div>
+</body>
+
+</html>

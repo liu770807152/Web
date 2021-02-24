@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background:lightseagreen;
+        }
+        .main{
+            margin:100px auto;
+            width:420px;
+        }
+        .shield{
+            width: 420px;
+            height: 500px;
+            margin-top:100px;
+           
+        }
+        button{
+            width: 100px;
+            height: 40px;
+            text-align:center;
+            margin-left:60px;
+        }
+        img{
+            transition:all 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <button>打散</button>
+        <button>合起</button>
+        <div class="shield">
+            <img src="images/shield_1_01.png" alt="">
+            <img src="images/shield_1_02.png" alt="">
+            <img src="images/shield_1_03.png" alt="">
+            <img src="images/shield_1_04.png" alt="">
+            <img src="images/shield_1_05.png" alt="">
+            <img src="images/shield_1_06.png" alt="">
+            <img src="images/shield_1_07.png" alt="">
+            <img src="images/shield_1_08.png" alt="">
+            <img src="images/shield_1_09.png" alt="">
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var buttons=document.querySelectorAll("button");
+    var imgs=document.querySelectorAll("img");
+    buttons[0].onclick=function(){
+        for(var i=0;i<imgs.length;i++){
+            var x=Math.random()*400-200;
+            var d=Math.random()*360;
+            imgs[i].style.transform=`translate(${x}px) rotate(${d}deg)`
+        }
+    };
+    buttons[1].onclick=function(){
+        for(var i=0;i<imgs.length;i++){
+            imgs[i].style.transform=``;
+        }
+    }
+   
+</script>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        html,body{
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background:rgb(2, 2, 73);
+        }
+        svg{
+            background:rgba(0,0,0,0.5);
+        }
+        text{
+            font-size:120px;
+            stroke-width: 5;
+           
+            stroke-dasharray: 0;
+            stroke:green;
+        }
+        .text1{
+            animation: text0 10s infinite;
+            stroke:red;
+        }
+        .text2{
+            animation: text1 10s infinite;
+            stroke:yellow;
+        }
+        .text3{
+            animation: text2 10s infinite;
+            stroke:lightskyblue;
+        }
+        @keyframes text0{
+            0%,100%{
+                stroke-dasharray: 20;
+            }
+            50%{
+                stroke-dasharray: 250; 
+            }
+            
+        }
+        @keyframes text1{
+            0%,100%{
+                stroke-dasharray: 233;
+            }
+            50%{
+                stroke-dasharray: 10;
+            }
+        }
+        @keyframes text2{
+            0%,100%{
+                stroke-dasharray: 10;
+            }
+            30%{
+                stroke-dasharray: 40;
+            }
+            50%{
+                stroke-dasharray:183;
+            }
+        }
+    </style>
+</head>
+<body>
+    <svg width="900" height="300" >
+        <g>
+            <text class="text0" x="40" y="200">MA XIAO ZHA</text>
+            <text class="text1" x="40" y="200">MA XIAO ZHA</text>
+            <text class="text2" x="40" y="200">MA XIAO ZHA</text>
+            <text class="text3" x="40" y="200">MA XIAO ZHA</text>
+        </g>
+    </svg>
+</body>
+</html>

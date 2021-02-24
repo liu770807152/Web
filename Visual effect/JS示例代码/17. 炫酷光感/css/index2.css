@@ -1,0 +1,41 @@
+html,
+body {
+  overflow: hidden;
+  background: darkblue;
+}
+
+.wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  -webkit-perspective: 500px;
+  perspective: 500px;
+}
+
+i{
+  width: 8px;
+  height: 8px;
+  background:rgba(255, 255, 255, 0.432);
+  position: absolute;
+  box-shadow: 0 0 10px 0 white;
+  border-radius: 50%;
+  animation: spin 3s ease-in-out  infinite;
+  opacity: 0;
+}
+
+@keyframes spin {
+  from {
+    opacity: 0;
+  }
+  10%{
+    opacity: 1;
+  }
+  50%{
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(-4px, -4px, 570px);
+  }
+}

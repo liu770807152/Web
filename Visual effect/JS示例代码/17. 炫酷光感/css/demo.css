@@ -1,0 +1,55 @@
+html,body{
+    height:100%;
+    overflow: hidden;
+}
+body{
+    background:darkblue;
+
+}
+.wrapper{
+   position: absolute;
+   left:50%;
+   top:50%;
+   transform: translate(-50,-50%);
+   width:8px;
+   height:8px;
+   background:red;
+   border-radius: 50%;
+   perspective:500px;
+}
+.wrapper i{
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background:rgba(255,255,255,1);
+    box-shadow: 0 0 10px 0 white;
+    border-radius: 50%;
+    opacity:0;
+    animation: run 3s ease-in-out infinite;
+    
+}
+.wrapper i:nth-child(1){
+    transform: rotate(12deg) translateX(80px);
+}
+.wrapper i:nth-child(2){
+    transform: rotate(24deg) translateX(80px);
+   
+}
+.wrapper i:nth-child(3){
+    transform: rotate(36deg) translateX(80px);
+}
+.wrapper i:nth-child(4){
+    transform: rotate(48deg) translateX(80px);
+}
+
+@keyframes run{
+    0%{
+       opacity: 0;
+    }
+    10%{
+        opacity:1;
+    }
+    100%{
+        transform: translate3d(0,0,560px);
+    }
+}

@@ -1,0 +1,148 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #333642;
+}
+
+.plate {
+    margin: 300px auto;
+    width: 310px;
+    height: 280px;
+    background: #9CD8BD;
+    border-radius: 5%;
+    position: relative;
+}
+
+/*盘子  */
+
+.record {
+    width: 200px;
+    height: 200px;
+    background: black;
+    border-radius: 50%;
+    position: absolute;
+    left: 40%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    animation: cricle 1s linear infinite;
+}
+
+.record::before {
+    content: "";
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+    background: pink;
+    background: repeating-radial-gradient(black, black 5px, #1C1C1C 6px, #1C1C1C 7px);
+}
+
+.inner {
+    width: 55px;
+    height: 55px;
+    background: linear-gradient(white, white 50%, pink 50%, pink);
+    position: absolute;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.inner:after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background: black;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.inner::before {
+    content: "cd play";
+    text-align: center;
+    font-size: 12px;
+    font-family: "宋体";
+    display: block;
+    position: relative;
+    top: 8px;
+}
+
+.sun {
+    width: 200px;
+    height:200px;
+    background:linear-gradient(left,red,yellow);
+    background:-webkit-linear-gradient(45deg,
+    transparent 30% ,rgba(255,255,255,0.2) 45% ,rgba(255,255,255,0.3) 50%,
+    rgba(255,255,255,0.2) 55%,
+    transparent
+    );
+    border-radius:50%;
+    position: absolute;
+    left:40%;
+    top:50%;
+    transform: translate(-50%,-50%);
+}
+.arm{
+    width: 40px;
+    height: 40px;
+    background: #939393;
+    position: absolute;
+    right:20px;
+    top:40px;
+    border-radius: 50%;
+    border: 5px solid gray;
+}
+.arm .rod{
+    position: absolute;
+    right: 13px;
+    width: 60px;
+    top: 10px;
+    height: 110px;
+    border: 10px solid #939393;
+    transform: skew(-20deg, -20deg); 
+    transform-origin: top right;
+    border-left-color: transparent;
+    border-top-color: transparent;
+    border-radius: 0 0 30% 0;
+    animation: ro 0.5s infinite;
+    animation-direction: alternate-reverse;
+    
+}
+.rod:after{
+    content: "";
+    top: 97px;
+    left: -21px;
+    width: 20px;
+    height: 30px;
+    background: gray;
+    position: absolute;
+    border-radius: 20%;
+    transform: skew(20deg, 20deg) rotate(75deg);
+}
+@keyframes cricle{
+    0%{
+        transform:translate(-50%, -50%) rotate(0deg);
+    }
+    100%{
+        transform:translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes ro{
+    0%{
+        transform: skew(-20deg,-20deg);
+    }
+    100%{
+        transform: skew(-20deg,-20deg) rotate(2deg);
+    }
+}

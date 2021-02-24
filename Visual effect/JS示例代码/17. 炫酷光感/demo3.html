@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            background: darkblue;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .main {
+            width: 16px;
+            height: 16px;
+            /* background:red; */
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            perspective: 1000px;
+        }
+
+        .main i {
+            width: 16px;
+            height: 16px;
+            background: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 10px 0 white;
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0;
+            animation: run 3s ease-in-out infinite;
+        }
+
+        i:nth-child(1) {
+            transform: rotate(0deg) translateX(80px);
+        }
+
+        i:nth-child(2) {
+            transform: rotate(12deg) translateX(80px);
+        }
+
+        i:nth-child(3) {
+            transform: rotate(24deg) translateX(80px);
+        }
+
+
+        @keyframes run {
+            0% {
+                opacity: 0;
+            }
+
+            30% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 1;
+                transform: translate3d(0, 0, 560px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+
+    </div>
+</body>
+
+</html>
+<script>
+    var is = document.getElementsByTagName("i");
+    for (var i = 0; i < is.length; i++) {
+        is[i].style.transform = `rotate(${12 * i}deg)  translateX(150px)`;
+        is[i].style.animationDelay = `${0.05 * i}s`
+    }
+</script>

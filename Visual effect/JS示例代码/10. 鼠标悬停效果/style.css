@@ -1,0 +1,123 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  background: #f9f9f9 url(images/bg.jpg);
+}
+
+h2 {
+  color: transparent;
+  text-align: center;
+  font-weight: bold;
+  font-size: 3rem;
+  background: #2CC4C4;
+  opacity: 0.6;
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  top: 20px;
+  transform: translate(-50%, 0);
+  background-size: 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.main {
+  margin-top: 200px;
+  text-align: center;
+}
+
+.item {
+  width: 220px;
+  height: 220px;
+  display: inline-block;
+  margin: 20px;
+  border-radius: 50%;
+  position: relative;
+  box-shadow: inset 0 0 0 16px rgba(255, 255, 255, 0.6), 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease-in-out;
+}
+
+.img1 {
+  background-image: url(images/1.jpg);
+}
+
+.img2 {
+  background-image: url(images/2.jpg);
+}
+
+.img3 {
+  background-image: url(images/3.jpg);
+}
+
+.info {
+  position: absolute;
+  background: rgba(63, 147, 147, 0.8);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.4s ease-in-out;
+  transform: scale(0);
+}
+
+.info h3 {
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 22px;
+  margin: 0 30px;
+  padding: 45px 0 0 0;
+  height: 140px;
+  font-family: 'Open Sans', Arial, sans-serif;
+  text-shadow: 0 0 1px #fff, 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.info p {
+  color: #fff;
+  padding: 10px 5px;
+  font-style: italic;
+  margin: 0 30px;
+  font-size: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  transition: all 1s ease-in-out 0.4s;
+}
+
+.info p a {
+  display: block;
+  color: #fff;
+  color: rgba(255, 255, 255, 0.7);
+  font-style: normal;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 9px;
+  letter-spacing: 1px;
+  padding-top: 4px;
+  font-family: 'Open Sans', Arial, sans-serif;
+}
+
+.info p a:hover {
+  color: #fff222;
+  color: rgba(255, 242, 34, 0.8);
+}
+
+.item:hover {
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.item:hover .info {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.item:hover .info p {
+  opacity: 1;
+}
