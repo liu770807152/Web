@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>nodeName & nodeValue</title>
+</head>
+<body>
+  <!--nodeName & nodeValue-->
+  <div id="container">This is a div node</div>
+  <script>
+    var divNode = document.querySelector('#container');
+    console.log(divNode.nodeName + '/' + divNode.nodeValue);
+    
+    var attrNode = divNode.attributes[0];
+    console.log(attrNode.nodeName + '/' + attrNode.nodeValue);
+    
+    var textNode = divNode.childNodes[0];
+    console.log(textNode.nodeName + '/' + textNode.nodeValue);
+    
+    var commentNode = document.body.childNodes[1];
+    console.log(commentNode.nodeName + '/' + commentNode.nodeValue);
+    
+    console.log(document.docType.nodeName + '/' + document.docType.nodeValue);
+    
+    var fragment = document.createDocumentFragment();
+    console.log(fragment.nodeName + '/' + fragment.nodeValue);
+  </script>
+</body>
+</html>
