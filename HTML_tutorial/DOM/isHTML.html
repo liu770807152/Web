@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>isHTML</title>
+  </head>
+  <body>
+    <script>
+      // 属性法 based on attributes
+      function isXML(ele) {
+        var documentElement = ele && (ele.ownerDocument || ele).documentElement;
+        return documentElement ? documentElement.nodeName !== "HTML" : false;
+      }
+      // 功能法（最可靠）based on functionality (most reliable)
+      // HTML的节点名总是大写的 names of HTML nodes are always made of capital letters
+      function isXML2(doc) {
+        return (
+          doc.createElement("p").nodeName !== doc.createElement("P").nodeName
+        );
+      }
+    </script>
+  </body>
+</html>
