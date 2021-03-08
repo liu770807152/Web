@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>myDOMReady</title>
+  </head>
+  <body>
+    <script>
+      function myReady(fn) {
+        // 通过能力检测，确定现代浏览器，使用DOMContentLoaded事件处理
+      	if (document.addEventListener) {
+      		// false表示在事件冒泡阶段捕获
+      		document.addEventListener('DOMContentLoaded', fn, false);
+      	} else {
+      		IEContentLoaded(fn);
+      	}
+
+      	// IE模拟DOMContentLoaded
+      	function IEContentLoaded(fn) {
+      		var done = false;
+      		// 只执行一次用户的回调函数init()
+      		var init = function() {
+      			if (!done) {
+      				done = true;
+      				fn();
+      			}
+      		} ;
+
+      		(function() {
+      			try {
+      				// DOM树未创建完之前调用doScroll会抛出错误
+      				d.documentElement.doScroll('left');
+      			} catch (e) {
+      				// 保险起见，延迟再试一次
+      				setTimeout(arguments.callee, 50);
+      				return;
+      			}
+      			// 没有错误就表示DOM树创建完毕，然后马上执行用户回调函数
+      			init();
+      		})();
+
+      		// 监听document的加载状态
+      		onreadystatechange = function() {
+      			// 如果用户是在DOMReady后绑定的函数，就马上执行
+      			if (d.readyState == 'complete') {
+      				d.onreadystatechange = null;
+      				init();
+      			}
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
