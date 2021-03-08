@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>contains</title>
+  </head>
+  <body>
+    <div id="father">
+      <div id="son"></div>
+    </div>
+    <script>
+      var father = document.querySelector("#father");
+      var son = document.querySelector("#son");
+      // 兼容IE
+      function fixContains(a, b) {
+        try {
+          // 找到节点的父节点
+          while ((b = b.parentNode)) {
+            if (b === a) {
+              return true;
+            }
+          }
+          return false;
+        } catch (e) {
+          // 游离在DOM树外的节点
+          return false;
+        }
+      }
+      alert(fixContains(father, son));
+      // 现代浏览器
+      alert(father.contains(son));
+    </script>
+  </body>
+</html>
