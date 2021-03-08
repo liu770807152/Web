@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>isElement</title>
+</head>
+<body>
+  <div class="test-detail"></div>
+  <script>
+    function isElement(element) {
+					if (element && element.nodeType === 1) {
+						// 防止普通对象伪造，IE9后用Node判断
+						if (window.Node && (element instanceof Node)) {
+							return true;
+						}
+						try {
+							// 更老的版本用试错法
+							var tempDiv = document.createElement('div');
+							tempDiv.appendChild(element);
+							tempDiv.removeChild(element);
+						} catch (e) {
+							return false;
+						}
+						return true;
+					}
+					return false;
+				}
+    // counterfeit an element node
+    var obj = {
+      nodeType: 1
+    };
+    console.log(isElement(document.querySelector('.test-detail')));
+    console.log(isElement(obj));
+  </script>
+</body>
+</html>
