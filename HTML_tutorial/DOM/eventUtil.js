@@ -24,5 +24,34 @@ var eventUtil = {
 			// DOM0级
 			element['on'+type] = null;
 		}
-	}
+	},
+  getEvent: function(event) {
+    return event ? event : window.event;
+  },
+  getType: function(event) {
+    return event.type;
+  },
+  getElement: function(event) {
+    return event.target || event.srcElement;
+  },
+  preventDefault: function(event) {
+    if (event.preventDefault) {
+      // modern browser
+      event.preventDefault();
+    } else {
+      // IE
+      event.returnValue = false;
+    }
+  },
+  stopPropagation: function(event) {
+    if (event.stopPropagation) {
+      // modern browser
+      event.stopPropagation();
+    } else {
+      // IE
+      event.cancelBubble = true;
+    }
+  }
 }
+
+export default eventUtil;
