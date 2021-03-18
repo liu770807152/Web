@@ -11,7 +11,7 @@ People.prototype.intro = function() {
     + this.weight + ' kilograms');
 }
 
-People.prototype.eating = function() {
+People.prototype.eat = function() {
   console.log('I am eating.');
 }
 

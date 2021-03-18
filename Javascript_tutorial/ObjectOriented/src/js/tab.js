@@ -56,4 +56,4 @@ Tab.prototype._slidePage = function(index) {
   });
 }
 
-new Tab('slide');
+new Tab('fade');
