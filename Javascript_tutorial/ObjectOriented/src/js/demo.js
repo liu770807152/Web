@@ -1,10 +1,11 @@
 function People(name, height, weight) {
+  // 对象属性 attributes
   this.name = name;
   this.height = height;
   this.weight = weight;
 }
 
-// 成员方法 member methods
+// 对象方法 object methods
 People.prototype.intro = function() {
   console.log('I am ' + this.name + '. ' + this.height + 'cm tall. And '
     + this.weight + ' kilograms');
