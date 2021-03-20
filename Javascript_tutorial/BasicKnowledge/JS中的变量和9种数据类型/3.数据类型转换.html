@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+	<title>码小渣，一个拥有多年BUG开发经验的前端工程师</title>
+	<!-- IMPORT CSS -->
+</head>
+
+<body>
+	<!-- IMPORT JS -->
+	<script>
+		/*
+		 * 数据类型检测
+		 *    typeof
+		 *    instanceof
+		 *    constructor
+		 *    Object.prototype.toString.call() 
+		 */
+		/* let a = typeof typeof typeof [12, 23];
+		// typeof typeof "object"
+		// typeof "string"
+		// =>"string"
+		console.log(a); */
+
+		/* 数据类型转换：把其它数据类型转换为数字类型
+		 *   【方法】
+		 *      - Number([val])
+		 *      - parseInt/parseFloat([val])
+		 *   【方式】
+		 *      - 手动处理
+		 *      - 隐式转换（调用的是Number([val])的方案）
+		 *        + isNaN([val])
+		 *        + 数学运算（特殊情况：+在出现字符串的情况下不是数学运算，是字符串拼接）
+		 *        + 在==比较的时候，有些值需要转换为数字再进行比较
+		 *        + ...
+		 *   【机制】
+		 *      - Number处理：字符串中只要出现非数字字符结果就是NaN，空字符串是零；true变为1，false变为0；null变为0，undefined变为NaN；引用数据类型都是先转换为字符串然后再转换为数字；symbol不允许被转换，bigint直接转换即可；
+		 *      - parseInt/parseFloat：先把val转换为字符串，然后从字符串左侧第一个字符进行查找（遇到一个非有效数字字符则结束查找，而且不论后面是否还有），把找到的转换为数字，一个都没找到，结果就是NaN
+		 */
+		Number("")  //0
+		parseInt("") //NaN
+		isNaN("") //isNaN(0)  false
+
+		Number(null) //0 
+		parseInt(null) //parseInt("null") NaN
+		isNaN(null) //false
+
+		Number("12px") //NaN
+		parseInt("12px") //12
+		isNaN("12px") //true
+
+		Number([]) //0
+		parseInt([]) //NaN
+		isNaN([]) //false
+	</script>
+</body>
+
+</html>
