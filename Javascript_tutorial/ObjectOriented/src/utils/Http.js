@@ -1,8 +1,10 @@
 import tools from './tools';
 import config from './config'
 
+// 用Symbol来设置私有方法！
+const doAjax = Symbol('doAjax');
 class HTTP {
-  _doAjax(options) {
+  [doAjax](options) {
     let o = window.XMLHttpRequest
       ? new XMLHttpRequest()
       : new ActiveXObject("Microsoft.XMLHTTP");
@@ -91,11 +93,11 @@ class HTTP {
   }
 
   ajax(opt) {
-    this._doAjax(opt);
+    this[doAjax](opt);
   }
 
   post(url, data, dataType, successCB, errorCB, completeCB) {
-    this._doAjax({
+    this[doAjax]({
       type: 'POST',
       url: url,
       data: data,
@@ -107,7 +109,7 @@ class HTTP {
   }
 
   get(url, dataType, successCB, errorCB, completeCB) {
-    this._doAjax({
+    this[doAjax]({
       type: 'GET',
       url: url,
       dataType: dataType,
