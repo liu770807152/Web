@@ -22,3 +22,5 @@ class People {
     console.log('I am drinking coffee.');
   }
 }
+
+export { People };
