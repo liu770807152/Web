@@ -18,7 +18,7 @@ console.log(getStop([{"source": "Beijing", "destination": "Shanghai"},
                     {"source": "Chongqing", "destination": "Shenzhen"},
                     {"source": "Chongqing", "destination": "Canton"}]));
 
-// WHY?
+
 console.log(({} + {}).length);
 console.log(([] + []).length);
 console.log((function(){}).length);
