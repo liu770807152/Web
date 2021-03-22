@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSONP</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+  </head>
+  <body>
+    <!-- JSON with padding -->
+
+    <div class="search-wrap">
+      <div class="input-wrap">
+        <!-- search-input负责样式，J——searchInput负责JS钩子，如果一样可能会有样式覆盖的问题 -->
+        <input type="text" class="search-input J_search-input" />
+      </div>
+    </div>
+    <div class="list-wrap">
+      <ul class="wd-list J_wd-list"></ul>
+    </div>
+
+    <!-- 虽然是script，但是type是html，所以不会执行 -->
+    <script type="text/html" id="J_listTpl">
+      <li class="wd-item">
+        <a
+          class="wd-lk"
+          href="http://www.google.com/search?q={{wdLink}}"
+          target="_blank"
+          >{{wd}}
+        </a>
+      </li>
+    </script>
+
+    <script type="text/javascript" src="js/index.js"></script>
+  </body>
+</html>
