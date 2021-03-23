@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tencent Classroom Video Upload</title>
+  <link rel="stylesheet" href="css/index.css" />
+</head>
+<body>
+  <!-- modal -> mod -->
+  <div class="upload-mod-wrap js-upload-mod">
+    <div class="upload-mod">
+      <div class="mod-head">
+        <a href="javascript:;" class="fa fa-times js-close-mod-btn"></a>
+      </div>
+      <div class="upload-ctn">
+        <div class="upload-area js-upload-area btn">
+          <div class="upload-info">
+            <span class="percent js-percent">0.0%</span>
+            <span class="upload-success">
+              <i class="fa fa-check-circle"></i>
+               Upload success!
+            </span>
+          </div>
+          <div class="progress-bar js-progress-bar"></div>
+          <div class="upload-input">
+            <label for="videoFile" class="input-label"></label>
+            <input type="file" id="videoFile" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a href="javascript:;" class="js-open-mod-btn">upload videos</a>
+
+  <script src="js/index.js"></script>
+</body>
+</html>
