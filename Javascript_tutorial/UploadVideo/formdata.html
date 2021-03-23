@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formdata</title>
+</head>
+<body>
+  <input type="text" id="username" />
+  <input type="text" id="password" />
+  <input type="submit" id="submitBtn" value="submit" />
+
+  <script type="text/javascript">
+    var oUsername = document.querySelector('#username'),
+        oPassword = document.querySelector('#password'),
+        oSubmitBtn = document.querySelector('#submitBtn'),
+        fd = new FormData();
+    oSubmitBtn.onclick = function(){
+      fd.append('Username', oUsername.value);
+      fd.append('Password', oPassword.value);
+      // 不会打印出输入内容，只会打印出一个Formdata的对象，里面出了原形什么都没有！
+      // console.log(fd);
+      // Formdata正确获取字符串的方法:
+      console.log(fd.get('Username'), fd.get('Password'));
+      // Formdata还可以设置:
+      fd.set('Username', 'Ra');
+      // Formdata还可以判断有无该字段
+      fd.has('Password');
+      // Formdata还可以删除
+      fd.delete('Password');
+      // 注意：访问不存在的字段，会返回null (不是undefined)!
+      console.log(fd.get('Password'));
+    }
+  </script>
+</body>
+</html>
