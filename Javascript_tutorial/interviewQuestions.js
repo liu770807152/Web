@@ -1,4 +1,5 @@
 /**
+ * Quotas面试题
  * @param {list(Map)} flights: a flight path from departure city to destination
  * @returns "Direct" if the path has 1 map, "1 stop" if the path has 2 maps and "X stops" if the path has X+1 maps
  */
@@ -9,7 +10,6 @@ function getStop(flights) {
     // 34: 'World Trip'   ->   extendable
     } [flights.length] || `${flights.length - 1} stops`;
 }
-
 console.log(getStop([{"source": "Beijing", "destination": "Canton"}]));
 console.log(getStop([{"source": "Beijing", "destination": "Shanghai"}, 
                     {"source": "Shanghai", "destination": "Canton"}]));
@@ -18,7 +18,87 @@ console.log(getStop([{"source": "Beijing", "destination": "Shanghai"},
                     {"source": "Chongqing", "destination": "Shenzhen"},
                     {"source": "Chongqing", "destination": "Canton"}]));
 
-// WHY?
-console.log(({} + {}).length);
-console.log(([] + []).length);
-console.log((function(){}).length);
+/** 特殊值相关问题 */
+console.log(({} + {}).length); // 30, why?
+console.log(([] + []).length); // 0, why?
+console.log((function(){}).length); // 0, why?
+
+/**
+ * 函数相关面试题, 运行环境：现代浏览器
+ * new Foo()的执行过程：
+ *  var _obj = {};
+ *  this指向_obj，然后添加属性，如
+ *  {
+ *    a: 1,
+ *    b: 2,
+ *  }
+ *  最后return this;
+ */
+// 构造函数
+function Foo() {
+    // 全局变量赋值
+    // 如果Foo没有执行，下面赋值行为肯定不进行
+    getName = function() {
+        console.log(1);
+    }
+    // console.log(this); -> Window
+    return this;
+}
+
+// 函数Foo上的静态方法 -> 一个函数对象上的方法
+Foo.getName = function() {
+    console.log(2);
+    return this; // this指向实例化的对象，而不是Window！
+}
+
+// 扩展函数原型上的方法
+Foo.prototype.getName = function() {
+    console.log(3);
+}
+
+// 给全局变量赋值为一个匿名函数
+/**
+ * GO {
+ *  getName: undefined 
+ *           -> function getName() {} (全局预编译结束)
+ *           -> function() {console.log(4);} 
+ * }
+ */
+var getName = function() {
+    console.log(4);
+}
+
+// 函数声明
+function getName() {
+    console.log(5);
+}
+/** 问题如下: */
+Foo.getName(); // -> 2, 执行对象Foo上的静态方法
+
+getName(); // -> 4, line 68
+
+Foo().getName(); // -> 1
+// Foo() -> this -> Window -> Window.getName
+// 这题执行Foo()函数返回值的一个方法getName
+// line 41, getName重新赋值给一个新函数，新函数返回1
+
+getName(); // -> 1
+// 上一题中getName已经重新赋值了
+// Window.getName() -> 1 -> getName() -> 1
+
+new Foo.getName(); // -> 2
+// new的是Foo.getName，即Foo的静态方法
+// 注意，该题打印结果与第一题一致，然而this指向不同：
+//      第一题this显然是Foo()，这题的this则是Foo.getName {}！
+//      换言之，这题的new实例化了Foo对象中的一个静态函数
+
+new Foo().getName(); // -> 3
+// Step 1. var foo = new Foo()；
+// Step 2. foo.getName() -> Foo.prototype.getName()
+// 这题的new并没有什么实际意义，因为getName并不是构造函数
+
+new new Foo().getName(); // -> 3
+// new Foo()是一个实例化对象，该对象执行原型上的getName()
+// 对返回值new没有什么作用，因此打印结果就是new Foo().getName()的结果
+
+new new Foo(); // -> Error, new Foo()返回一个中间值，不是构造器，不能用于构造对象
