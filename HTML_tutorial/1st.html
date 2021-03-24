@@ -1,17 +1,30 @@
+<!--HTML5的声明方式-->
+<!--目的是把document.compatMode由BackCompat(浏览器的怪异兼容性模式)变为CSS1Compat(W3C标准兼容模式)-->
 <!DOCTYPE html>
-<!--standard HTML5 doc, released in 2014-->
-<!--
-    head: usually for description, no show on the age
-        meta charset="utf-8" inform the browser which charset to use
-    body: content that shows on page
--->
-
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <title>1st lecture</title>
-    </head>
-    <body>
-        <h1>What to eat for dinner?</h1>
-    </body>
+<html
+  lang="en"
+  或者lang="zh-CN/HK/TW/SG"
+  (地区中文)或者lang="zh-CHS/Hans"
+  (纯简体中文)或者lang="zh-CHT/Hant(纯繁体中文)"
+>
+  <head>
+    <!--GB2312中国信息处理国家标准码(简体) GBK汉字扩展规范(增加了汉字收录，增加繁体、藏语、蒙语和维吾尔语等特殊文字) UTF-8万国码-->
+    <meta charset="UTF-8" />
+    <!--主页：网站名称+主要的关键字，30-40字
+			     详情页：详情名称+网站名称+简介
+			     列表页：分类名称+关键字+网站名称
+			     文章页：标题+分类+网站名称-->
+    <title>[标题]</title>
+    <!--100个字符
+			         网站名称+分类信息+网站名称-->
+    <meta name="keywords" content="" />
+    <!--80-120个汉字
+			         综合title+keywords的简单描述-->
+    <meta name="description" content="" />
+    <!--SEO基础, 搜索引擎的优先级：
+				title > description > keywords-->
+  </head>
+  <body>
+    <!--标签要语义化，如<i>italic标签要换成<em>emphasize-->
+  </body>
 </html>
