@@ -7,19 +7,79 @@
 
     <body>
         <!--標題标签-->
+        <!-- 特性：
+            i. 独占一行
+            ii. 粗体
+            iii. 大小不一，h1默认大小为2em(浏览器默认的文字像素是16px，2em就是16*2px；body里可修改默认文字像素)
+            iv. 默认margin为21.44px -->
         <h1>
             h1 tag
         </h1>
+
         <!--段落标签-->
         <!--一个段落里再多的空格都会转化为一个空格,划分段落必须用标签或者CSS样式-->
+        <!-- 特性：
+            i. 独占一行
+            ii. 设置缩进: <p style="text-indent: 2em;">XXX</p> -->
         <p>
             content for head1                        blablabla
         </p>
 
-        <h2>
-            h2 tag
-        </h2>
-        <img src="C++ hard parts.jpg" />
+        <!--strong标签-->
+        <!-- 特性：
+            i. 语义化标签，比<b>标签好
+            ii. 加粗字体 -->
+        <strong>blablabla/strong>
+
+        <!--em标签-->
+        <!-- 特性：
+            i. 语义化标签，比<i>标签好。<i>标签一般用作图标，如<i class="fa fa-star"></i>
+            ii. 斜体，加强语气 -->
+        <em>blablabla</em>
+
+        <!--del标签-->
+        <!-- 特性：
+            i. 给字体加上删除线
+            ii. 可以用样式替代：style="text-decoration: line-through" -->
+        <del>blablabla</del>
+
+        <!--ins标签-->
+        <!-- 特性：
+            i. 给字体加上下划线
+            ii. 可以用样式替代：style="text-decoration: underline" -->
+        <ins>blablabla</ins>
+
+        <!--address标签-->
+        <!-- 特性：
+            i. 表地址 -->
+        <address>blablabla</address>
+
+        <!--div标签-->
+        <!-- 特性：
+            i. div是容器，是结构标签或布局标签
+            ii. div一定有宽高，所以也一定是块级元素，作布局用
+            iii. 独占一行
+            iv. 中文会自动换行，但是英文可能不会自动换行；因为浏览器可以解析英文，所以浏览器可以认出单词，如果单词太长，就不会自动换行
+            v. 在编辑器内，文本的空格和换行都是文本分隔符 -->
+        <div>blablabla</div>
+
+        <!--img标签-->
+        <!-- 特性：
+            i. alt必须加，title可选
+            ii. src可以用网络路径，或是本地的绝对或相对路径
+            iii. 求解：为了图片SEO考虑，实际应用不会通过背景图片加载图片，因为这样图片无法设置ALT属性；而直接使用img标签的话，就无法用背景尺寸属性直接修改图片大小了，JS的部分也需要对应改写​？ -->
+        <img src="images/_1.jpg" alt="1.jpg" title="First Image" />
+
+        <!--anchor标签-->
+        <!-- 特性：
+            i. target="_blank"新开一个网页
+            ii. <a>还可以打电话：<a href="tel:046xxxxxxx">XXX</a>
+            iii. <a>还可以发邮件：<a href="mailto:XXX@XXX.com">XXX</a>
+            iv. <a>还可以锚点定位，但是有更好的方法，不常用：<a href="#div1">XXX</a>
+            v. 协议限定符，可以执行JavaScript程序，每一次点击都会刷新页面。因此写成javascript:;来让它不刷新页面：
+                <a href="javascript:;"></a> -->
+        <a href="https://www.youtube.com" target="_blank"></a>
+        
         <!--无序列表-->
         <!--ul: 父元素标签  li: 子元素标签-->
         <ul>
