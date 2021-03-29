@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Dock</title>
+    <style type="text/css">
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+      }
+      ul {
+        --scale: 1;
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: flex-end;
+        background-color: #EEE;
+        height: calc(100px + 3em);
+      }
+      li {
+        display: block;
+        list-style: none;
+        margin: 1em;
+      }
+      li img {
+        width: calc(var(--scale) * 100px);
+        border-radius: calc(var(--scale) * 50px);
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <ul id="dock" class="dock">
+      <li><img src="http://placeimg.com/300/300/any?1" /></li>
+      <li><img src="http://placeimg.com/300/300/any?2" /></li>
+      <li><img src="http://placeimg.com/300/300/any?3" /></li>
+      <li><img src="http://placeimg.com/300/300/any?4" /></li>
+      <li><img src="http://placeimg.com/300/300/any?5" /></li>
+    </ul>
+    <script type="text/javascript">
+      function curve(x) {
+        return Math.exp(-x * x / 200 / 200) + 1;
+      }
+      document.querySelector('#dock').onmousemove = function(e) {
+        e = e || window.event;
+        e.currentTarget.querySelectorAll('li').forEach((li) => {
+          centroid = li.offsetLeft + li.offsetWidth / 2;
+          li.style.setProperty('--scale', curve(e.clientX - centroid));
+        });
+      }
+      document.querySelector('#dock').onmouseleave = function(e) {
+        e = e || window.event;
+        e.currentTarget.querySelectorAll('li').forEach((li) => {
+          li.style.setProperty('--scale', 1);
+        });
+      }
+    </script>
+  </body>
+</html>
