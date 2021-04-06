@@ -29,6 +29,7 @@
         <!--form：表單標籤-->
         <!--1.action:將表單數據提交至什麼地址-->
         <!--2.提交的方法：get/post-->
+
         <!--post不展示表單數據，安全但效率相對低-->
         <!--表單數據提交量相比get更大（>1Mb），可以支持圖片等-->
         <form action="" method="post">
@@ -41,6 +42,7 @@
             <input type="password" name="password" id="" value=""  placeholder="Type in password" />
             <input type="submit" value="Log In" />
         </form>
+
         <!--get提交表單數據，但是返回當前頁面-->
         <!--表單數據都顯示在鏈接地址上，附在鏈接地址之後發送給服務器-->
         <!--不安全，但效率高-->
@@ -53,29 +55,92 @@
             <input type="text" name="q" id="" placeholder="Type in what to search" value="" />
             <input type="submit" value="Search" />
         </form>
+        <form method="get" action="[url]">
+			<input type="text" name="username" value="Ra" maxlength="8" placeholder="Please input username" />
+			<input type="password" name="password" value="123456" />
+			<input type="radio" id="male" checked="checked" name="sex" value="male" />
+			<input type="checkbox" id="java" name="favoriteLang" value="java" />
+			<input type="file" readonly="readonly" name="attachment" value="xxx" />
+			<input type="submit" value="login" disable="disable" />
+		</form>
+		<!-- 特性：
+			i. input是内联块级元素
+			ii. name属性是必须的，不然取不到数据。value属性设置默认值
+			iii. maxlength不论什么文字，都是以字符数计算，一个英文字母和一个汉字都只算一个
+			iv. placeholder就是提示输入字符串，但是样式很难改，有潜在的浏览器兼容问题
+			v. readonly="readonly"会让输入框无法输入，disable="disable"也会让输入框无法输入。它们的区别是：
+				1) readonly在填写了value后，可以读取value的值；但是设置disabled后，value会不可读取
+			vi. 按下submit后，URL后会加上?username=…&password=…
+			vii. 前端一般做字段规则验证（如允许字符和长度），后端做数据有效性校验（和数据库的数据交互）
+			viii. 小案例：不聚焦时显示默认值，聚焦时显示空，输入字符串后再失去焦点时不会再显示默认值（模拟placeholder） -->
+            <form method="get" action="">
+                <input type="text" value="Please type in keywords" 
+                    onfocus="focusInput(this)" onblur="blurInput(this)" />
+            </form>
+            <script type="text/javascript">
+                function focusInput(obj) {
+                    // 此处有一个不用处理的bug，如果输入值就是Please type in keywords，失焦后也会清空
+                    if (obj.value === 'Please type in keywords') {
+                        obj.value = '';
+                    }
+                }
+                        
+                function blurInput(obj) {
+                    if (obj.value === '') {
+                        obj.value = 'Please type in keywords';
+                    }
+                }
+            </script>
 
+        <!--label标签-->
+        <label for=""></label>
+		<!-- 特性：
+			i. 内联元素
+			ii. 单选和多选框最常用label标签
+			iii. label和input标签经常一起用，如： -->
+            <form method="get" action="">
+                <!-- label的for属性和某一个input的id值相同时，点击label，可以聚焦该input输入框 -->
+                <label for="username">username</label>
+                <input type="text" id="username" name="username" />
+            </form>
+			<!-- iv. 单选按钮 -->
+            <form method="get" action="">
+                <input type="radio" id="male" checked="checked" name="sex" value="male" />
+                <label for="male">Man</label>
+                <input type="radio" id="female" name="sex" value="female" />
+                <label for="female">Female</label>
+                <br />
+                <input type="submit" />
+            </form>
+			<!-- v. 多选按钮 -->
+		    <form method="get" action="">
+			    <h3>What is your favorite language?</h3>
+				<p>
+					<input type="checkbox" id="java" name="favoriteLang" value="java" />
+					<label for="java">Java</label>
+				</p>
+				<p>
+					<input type="checkbox" id="c++" name="favoriteLang" value="C++" />
+					<label for="c++">Java</label>
+				</p>
+				<p>
+					<input type="checkbox" id="python" name="favoriteLang" value="python" />
+					<label for="python">Java</label>
+				</p>
+				<br />
+				<input type="submit" />
+			</form>
 
-        <!--頁面外跳轉-->
-        <a href="http://www.google.com">Google</a>
-        <!--頁面內跳轉-->
-        <a href="#ID001">Part 1</a>
-        <a href="#ID002">Part 2</a>
-        <!--div: 容器標籤-->
-        <div id="ID001">
-            <h1>Head1</h1>
-            <img src="C++ hard parts.jpg"/>
-            <p>Content1</p>
-        </div>
-
-        <div id="ID002">
-            <h1>Head2</h1>
-            <img src="C++ hard parts.jpg"/>
-            <p>Content2</p>
-        </div>
-
-        <mytag>
-            <p>Tag can be customized. But no default style can be applied.</p>
-        </mytag>
+        <!--textarea标签-->
+        <form method="get" action="">
+			<textarea cols="8（8个英文字母或数字的宽度）* [N个英语/字母为一组] + 17（滚动条宽度）px" rows="20">123456</textarea>
+			<br />
+			<input type="submit" />
+		</form>
+		<!-- 特性：
+			i. 内联元素
+			ii. <textarea>与</textarea>之间不可以换行！！！否则浏览器会把换行解析成字符进行显示，输入框就会显示空格
+			iii. Javascript建议使用.value而不是.innerHTML来获得字符串的值 -->
 
     </body>
 </html>

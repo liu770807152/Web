@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Remaining tags</title>
+</head>
+<body>
+  <!--table标签-->
+  <!-- 单元格内边距cellpadding  单元格之间的间距cellspacing -->
+  <table border="1" cellpadding="10" cellspacing="10">
+    <caption>我是标题</caption>
+    <thead>
+      <tr>table row行标签
+        <th>table header cell表头</th>
+        <th>table header cell表头</th>
+        <th>table header cell表头</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td [行合并rowspan="2"] [align="center|left|right"]>table data cell数据1</td>
+        <td [列合并colspan="2"]>table data cell数据2</td>
+      </tr>
+      <tr>
+        <td [列合并colspan="2"]>table data cell数据3</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td [列合并colspan="3"]>我是页尾</td>
+      </tr>
+    </tfoot>
+  </table>
+  <!-- 特性：
+    i. 内联元素
+    ii. 以前常用于布局，现在基本退出前端开发舞台了
+    iii. thead页眉, tfoot页尾和tbody表格主体必须同时出现！如果没有这三个标签，表格会等所有数据都加载好了才会加载出来。有了这三个标签后，页眉会最先加载出来，然后是页尾，最后再加载表格主题，代码顺序不会影响加载顺序。 -->
+
+  <!--span标签-->
+  <span></span>
+  <!-- 特性：
+    i. 内联元素
+    ii. 默认无样式
+    iii. 一般为了给文本内的一段文字加上不一样的样式或效果而使用，如 -->
+    <p>I am <span style="color: red;" id="super">super</span> excellent!</p>
+
+  <!-- fieldset & legend标签 -->
+  <form method="get" action="">
+    <fieldset>
+      <legend>User Login</legend>
+      <p>
+        <label for="username">username</label>
+        <input type="text" id="username" name="username" placeholder="Please input your username" />
+      </p>
+      <p>
+        <label for="password">password</label>
+        <input type="text" id="password" name="password" placeholder="Please input your password" />
+      </p>
+    </fieldset>
+  </form>
+  <!-- 特性：
+    i. fieldset是块级元素，legend也是块级元素
+    ii. fieldset可以将表单封装成一组，而legend是每一组的标题 -->
+
+  <!-- iframe标签 -->
+  <iframe src="http://www.google.com" 
+          width="100%" height="100" 
+          去框架外框frameborder="0" 是否有滚动条scrolling="yes | no | auto">
+  </iframe>
+  <!-- 特性：
+    i. 内联块级元素
+    ii. 好处是相比于frameset，它只占用一块区域，把HTML加载在它内部，加速了HTTP请求
+    iii. 它和frameset有共同的缺点：
+      1) 对搜索引擎不友好，做不了SEO；
+      2) 滚动条体系混乱，可能出现两个滚动条；
+      3) 加载过程完全无法控制，加载状态完全无法获取，框架内外的数据传递非常困难 -->
+
+  <!-- select标签，因为样式自定义很麻烦，所以不常用 -->
+  <form method="get" action="">
+    <select name="lang">
+      <option value="">Please select</option>
+      <option value="javascript">Javascript</option>
+      <option value="php">PHP</option>
+      <option>Java</option>
+    </select>
+    <br />
+    <input type="submit" />
+  </form>
+  <!-- 特性：
+    i. input里的name & value pair对应着select的name属性和option的value属性
+    ii. option默认优先查找value属性，如果没有定义value属性，则以标签对中间的文本为value（因此Please select对应的value是空） -->
+
+  <!-- 取代div的多个标签，如header、footer、section、nav、aside，使得HTML元素更语义化
+	特性：
+		i. 兼容性不太好 -->
+
+  <!-- dl(definition list)定义列表标签，dt(definition term)，dd(definition description) -->
+  <dl>
+    <dt>My Dream
+      <dd>Become a Web developer.</dd>
+    </dt>
+  </dl>
+  <!-- 特性：
+    i. 块级元素 -->
+
+  <!-- strong/em/del/ins/address/sub/sup标签，给文字添加各种样式 -->
+</body>
+</html>
