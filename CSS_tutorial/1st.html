@@ -14,20 +14,48 @@
                 font-size: 100px;
             }
             div{
-                color: red /*加上!important之後全部字體變紅，因爲其優先級被人爲提高*/;
+                color: red;
                 font-size: 200px;
             }
         </style>
         <link rel="stylesheet" type="text/css" href="1st.css" />
     </head>
+    <!--CSS类型：内联样式、内部样式表、外部样式表-->
+    <!--优先级为：内联样式 > 外部样式表 > 内部样式表-->
+    <!--内联样式只有一种情况会用到：
+            div style="display: none;">[data from back-end server]</div> (参考天猫)
+        内部样式表一般用于测试、动态调用CSS和渲染速度优化(参考百度)
+        绝大多数情况用外部样式表 -->
 
+    <!--选择器类型：
+        1. ID选择器：#
+        2. 类选择器：.
+        3. 通配符：*
+        4. 属性选择器：选择有某个属性的元素，如
+            [id="box"] { width: 100px; } / [href] { color: red; }
+        5. 派生选择器：选择一个父元素的任意层级的子元素，如
+            <strong class="content">
+				<em class="text"> XXX </em>
+			</strong>
+			/* 权重值为：10+10=20 */
+			/* 浏览器的匹配顺序是从右到左，DOM树中从下到上！因为派生选择器可以越级，从上往下找的话需要遍历所有分支，但是从下往上就不需要 */
+			.content .text {
+				color: red;
+			}
+        6. 并列选择器，如： h1.title {} 尽量少用
+        7. !important 优先级最高，在样式后紧跟 !important，慎用！如：
+            width: 100px !important; 
+    -->
+    <!--
+        选择器优先级：!important > ID > 类/属性 > 标签 > * 
+        另按照复杂度排名：并列选择器 > 派生选择器 > ID选择器
+    -->
     <body>
-        <!--優先級最高的樣式-->
         <div id="d2" style="color: blue; font-size: 50px;">
             <p>Hello world!</p>
         </div>
         <!--無style的，同樣的選擇器，誰在最後誰最優先-->
-        <!--關於選擇器的優先級：繼承的樣式 < 瀏覽器模式的樣式 < 標籤樣式 < class樣式 < id樣式 < style屬性樣式-->
+        <!--關於選擇器总的優先級：繼承的樣式 < 瀏覽器模式的樣式 < 標籤樣式 < class樣式 < id樣式 < style内联樣式-->
         <div id="d1">
             <p>Hello world!</p>
         </div>
