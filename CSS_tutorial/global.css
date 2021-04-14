@@ -1,0 +1,57 @@
+body {
+  font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;
+  /* 
+    浏览器默认的外边距
+    IE8 -> 上下16  左右8
+    IE7 -> 上下16  左右11
+  */
+  margin: 0;
+}
+div {
+  /* 
+    border-box（IE盒模型）
+    width = border + padding + 内容的宽度
+    height = border + padding + 内容的高度
+  */
+  box-sizing: border-box;
+  /* 兼容火狐 */
+  -moz-box-sizing: border-box;
+  /* 兼容Chrome和低版本的Safari */
+  -webkit-box-sizing: border-box;
+  /* 兼容IE8以下 */
+  -ms-box-sizing: border-box;
+  /* 兼容Opera和Presto */
+  -o-box-sizing: border-box;
+}
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+/* 为div和ul组成的Navbar等组件清除浮动，解决高度塌陷的问题（可选） */
+ul::after,
+div::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}
+input,
+textarea,
+button {
+  outline: none;
+}
+a {
+  text-decoration: none;
+}
+i, 
+em {
+  font-style: normal;
+}
