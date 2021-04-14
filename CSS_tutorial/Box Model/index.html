@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Box Model</title>
+    <style type="text/css">
+      .content-box {
+        box-sizing: content-box;
+        /* 兼容火狐 */
+        -moz-box-sizing: content-box;
+        /* 兼容Chrome和低版本的Safari */
+        -webkit-box-sizing: content-box;
+        /* 兼容IE8以下 */
+        -ms-box-sizing: content-box;
+        /* 兼容Opera和Presto */
+        -o-box-sizing: content-box;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        /* 空白部分宽30px */
+        padding: 30px;
+        border: 1px solid #000;
+      }
+      .box .box1 {
+        width: 100%;
+        height: 100%;
+        background-color: orange;
+      }
+
+      .new-box {
+        /* 
+						border-box（IE盒模型）
+						width = border + padding + 内容的宽度
+						height = border + padding + 内容的高度
+					*/
+        box-sizing: border-box;
+        /* 兼容火狐 */
+        -moz-box-sizing: border-box;
+        /* 兼容Chrome和低版本的Safari */
+        -webkit-box-sizing: border-box;
+        /* 兼容IE8以下 */
+        -ms-box-sizing: border-box;
+        /* 兼容Opera和Presto */
+        -o-box-sizing: border-box;
+        width: 200px;
+        height: 200px;
+        /* 空白部分宽30px */
+        padding: 30px;
+        border: 1px solid #000;
+      }
+      .box .box1 {
+        width: 100%;
+        height: 100%;
+        background-color: orange;
+      }
+      .new-box .box2 {
+        width: 100%;
+        height: 100%;
+        background-color: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <!--
+    W3C 标准盒模型：
+			属性width,height只包含内容content，不包含border和padding。
+		IE 盒模型：
+			属性width,height包含border和padding，指的是content+padding+border。
+  -->
+    <!--
+    由内到外：
+    	i. 宽高所划分的区域
+			ii. 内边距padding, 不占据盒子本身的宽高
+			iii. 边框border, 不占据盒子本身的宽高
+			iv. 外边距margin
+  -->
+    <!--1. 内层盒子相对于外层盒子居中，盒子模型为标准盒模型。只需要给外层盒子加上内边距：-->
+    <div class="box content-box">
+      <div class="box1"></div>
+    </div>
+    <!--2. 内层盒子相对于外层盒子居中，且严格长宽200px，即内/外边距+边框计入长宽的范畴-->
+    <div class="new-box content-box">
+      <div class="box2"></div>
+    </div>
+    <!--相对于页面水平居中
+				1) 如果是内层的元素，不能改变垂直方向的位置，否则会有margin塌陷的问题，会连同外层元素一起改变位置！
+          /*   上下0  左右自动 */
+          margin: 0 auto;
+				2) 如果是单独的元素，可以改变垂直方向的位置
+          /* 上0,可调 左右auto所以居中 下0,可调 */
+          margin: [0] auto [0];
+    -->
+  </body>
+</html>
