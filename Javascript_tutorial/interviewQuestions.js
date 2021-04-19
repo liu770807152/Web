@@ -22,6 +22,7 @@ console.log(getStop([{"source": "Beijing", "destination": "Shanghai"},
 console.log(({} + {}).length); // 30, why?
 console.log(([] + []).length); // 0, why?
 console.log((function(){}).length); // 0, why?
+console.log([] == []); //false, why?
 
 /**
  * 函数相关面试题, 运行环境：现代浏览器
