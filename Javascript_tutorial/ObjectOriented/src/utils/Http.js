@@ -1,6 +1,7 @@
 import tools from './tools';
 import config from './config'
 
+// Source: https://www.bilibili.com/video/BV1i54y1v7bE?p=2
 // 用Symbol来设置私有方法！
 const doAjax = Symbol('doAjax');
 class HTTP {
