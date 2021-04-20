@@ -180,9 +180,93 @@ function myReduce(callback, initialValue) {
 
 /*=========================13. 删除头部元素 shift()=========================*/
 
-/*=========================14. 找索引 indexOf(element)=========================*/
+/*=========================13. 填充 fill()=========================*/
+console.log(Array(5).fill(0)); //  [0, 0, 0, 0, 0]
+console.log([1, 2, 3, 4].fill('s', 1, 3)); //  [1, 's', 's', 4]
+console.log('==================================================');
+
+/*=========================14. 找第一个索引 indexOf(element, [indexToStartSearch)=========================*/
+// 找不到返回-1
+
+/*=========================14. 找最后一个索引 lastIndexOf(element, [indexToStartSearch)=========================*/
+// 如 lastIndexOf(2, -3);
+
+/*=========================15. 条件查找  find(function/expression)=========================*/
+let lessons = [{name: 'js'}, {name: 'C++'}, {name: 'Java'}];
+// 查找对象时不能使用includes！！！
+console.log(lessons.includes({name: 'C++'})); //  false!
+console.log(lessons.find(function(item) {
+  return item.name === 'C++';
+})); //  { name: 'C++' }
+console.log('==================================================');
+/* 实现 */
+function find(array, callback) {
+  for (const value of array) {
+    if (callback(value)) {
+      return true;
+    }
+  }
+  return false;
+}
+
+Array.prototype.findIt = function(callback) {
+  for (const value of this) {
+    if (callback(value)) {
+      return true;
+    }
+  }
+  return false;
+}
+
+/*=========================15. 条件查找  findIndex(function/expression)=========================*/
+lessons = [{name: 'js'}, {name: 'C++'}, {name: 'Java'}];
+console.log(lessons.findIndex(function(item) {
+  return item.name === 'C++';
+})); //  1
+console.log('==================================================');
 
 /*=========================15. 通过索引删除 splice(pos, num)=========================*/
+// 返回被删除的元素组成的数组
+
+/*=========================15. 通过索引替换/增加 splice(pos, num, [items to replace or add])=========================*/
+arr = [1, 2, 3, 4];
+arr.splice(1, 1, 's'); //  [1, 's', 3, 4]
+console.log(arr);
+arr.splice(4, 0, 'a', 'b', 'c'); // [1, 's', 3, 4, 'a', 'b', 'c']
+console.log(arr);
+console.log('==================================================');
+
+/*=========================15. 清空数组=========================*/
+arr = [1, 877, 9, 10];
+arr.splice(0);
+arr = [];
+arr.length = 0;
+
+/*=========================15. 排序 sort=========================*/
+arr = [6, 9, 2, 0];
+arr = arr.sort(function(a, b) {
+  // -1从小到大  1从大到小
+  // a-b从小到大 b-a从大到小
+  return a - b;
+});
+console.log(arr);
+/* 实现 */
+function sort(array, callback) {
+  for (const n in array) {
+    for (const m in array) {
+      if (callback(array[n], array[m]) < 0) {
+        const temp = array[n];
+        array[n] = array[m];
+        array[m] = temp;
+      }
+    }
+  }
+  return array;
+}
+console.log(sort([5, 9, 0, 7], function(a, b) {
+  return a - b;
+}));
+console.log('==================================================');
 
 /*=========================16. 浅拷贝数组 slice()=========================*/
 //  对象只复制引用，String, Number & Boolean复制值
