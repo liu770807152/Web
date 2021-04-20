@@ -23,6 +23,33 @@ let newArray = arr.map(function (item, index, array) {
   return item * 2;
 });
 console.log(newArray); // ->  [2, 4, 6]
+
+let lessons = [
+  { code: 'COMP6710' },
+  { code: 'COMP6720' },
+  { code: 'COMP6730' },
+];
+let hd = lessons.map(function(value) {
+  value.difficulty = 'easy';
+  return value;
+});
+console.log(hd); //  { code: 'COMP6710', difficulty: 'easy' }
+/* 原数组也改变了！ */
+console.log(lessons); //  { code: 'COMP6710', difficulty: 'easy' }
+
+/* 解决方法：用Object.assign() */
+lessons = [
+  { code: 'COMP6710' },
+  { code: 'COMP6720' },
+  { code: 'COMP6730' },
+];
+hd = lessons.map(function(value) {
+  // 前后顺序千万不能反！
+  return Object.assign({ difficulty: 'easy' }, value);
+});
+console.log(hd); //  { code: 'COMP6710', difficulty: 'easy' }
+/* 原数组不变！ */
+console.log(lessons); //  { code: 'COMP6710' }
 console.log('==================================================');
 /* 实现 */
 function myMap(callback) {
@@ -192,7 +219,7 @@ console.log('==================================================');
 // 如 lastIndexOf(2, -3);
 
 /*=========================15. 条件查找  find(function/expression)=========================*/
-let lessons = [{name: 'js'}, {name: 'C++'}, {name: 'Java'}];
+lessons = [{name: 'js'}, {name: 'C++'}, {name: 'Java'}];
 // 查找对象时不能使用includes！！！
 console.log(lessons.includes({name: 'C++'})); //  false!
 console.log(lessons.find(function(item) {
