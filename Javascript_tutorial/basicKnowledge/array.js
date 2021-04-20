@@ -263,7 +263,22 @@ function sort(array, callback) {
   }
   return array;
 }
+function optimizedSort(array, callback) {
+  for (let i = 0; i < array.length; i++) {
+    for (let j = i; j < array.length; j++) {
+      if (callback(array[i], array[j]) > 0) {
+        const temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+      }
+    }
+  }
+  return array;
+}
 console.log(sort([5, 9, 0, 7], function(a, b) {
+  return a - b;
+}));
+console.log(optimizedSort([5, 9, 0, 7], function(a, b) {
   return a - b;
 }));
 console.log('==================================================');
