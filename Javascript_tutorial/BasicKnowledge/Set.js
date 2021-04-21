@@ -70,5 +70,5 @@ b = null; // 引用计数减为0，等待回收
 console.log(set3); // 无法访问对象了
 
 /** 如果对象在WeakSet外部被回收了，在Set内部的对象也会被一起回收。
-  * 由于该特性，WeakSet的values() & entries()都不准确，都不允许使用！！！
+  * 由于该特性，WeakSet的values() & entries() & size都不准确，都不允许使用！！！
   * for (const iterator of set) {}也不允许使用。  */

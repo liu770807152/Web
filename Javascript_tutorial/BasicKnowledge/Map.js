@@ -66,3 +66,6 @@ console.log(map); //  WeakMap {{…} => 'something not important'}
 setTimeout(() => {
   console.log(map); //  WeakMap {}
 }, 1000);
+
+/** 如果键指向的对象在WeakMap外部被回收了，在Map内部的键名所对应的KV Pair也会被一起回收。
+  * 由于该特性，WeakMap的keys() & values() & entries() & size都不准确，都不允许使用！！！ */
