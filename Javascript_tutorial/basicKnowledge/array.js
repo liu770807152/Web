@@ -90,29 +90,80 @@ function myFilter(callback) {
 }
 
 /*=========================4. every=========================*/
+// 如果没有设置初始值，则prev是第一个值，从第二个值开始遍历
 /* 使用 */
-// 每一次迭代的结果都是true，结果才返回true
-newArray = arr.every(function (item, index, array) {
-  return item % 2;
-});
-console.log(newArray); // ->  false
-console.log('==================================================');
+arr = [1, 2, 3];
+let initialValue = 0;
+// prev就是初始值
+newArray = arr.reduce(function (prev, item, index, array) {
+  prev += item;
+  return prev;
+}, initialValue);
+console.log(newArray); //  6
 /* 实现 */
-function myEvery(callback) {
+function myReduce(callback, initialValue) {
   let _arr = this;
   let _len = _arr.length;
-  let _arg2 = argument[1] || window;
-  let _newArr = [];
-  let _res = true;
-
+  let _arg3 = argument[2] || window;
+  let _item;
+  
   for (let i = 0; i < _len; i++) {
-    if (!callback.apply(_arg2, [_arr[i], i, _arr])) {
-      _res = false;
-      break;
-    }
+    _item = deepClone(_arr[i]);
+    initialValue = callback.apply(_arg3, [initialValue, _item, i, _arr]);
   }
-  return _res;
+  return initialValue;
 }
+
+/* 应用：获取最贵的商品 */
+let cart = [
+  { name: 'iphone', price: 12000 },
+  { name: 'ipad', price: 3600 },
+  { name: 'imac', price: 25000 }
+];
+function maxPrice(goods) {
+  return goods.reduce(function(prev, item) {
+    return prev.price > item.value ? prev : item;
+  });
+}
+console.log(maxPrice(cart)); //  { name: 'imac', price: 25000 }
+/* 应用：汇总商品价格 */
+cart = [
+  { name: 'iphone', price: 12000 },
+  { name: 'ipad', price: 3600 },
+  { name: 'imac', price: 25000 }
+];
+function sumPrice(goods) {
+  return goods.reduce(function(prev, item) {
+    return (prev += item.price);
+  }, 0);
+}
+console.log(sumPrice(cart)); //  40600
+/* 应用：获取价格超过10000的商品 */
+cart = [
+  { name: 'iphone', price: 12000 },
+  { name: 'ipad', price: 3600 },
+  { name: 'imac', price: 25000 }
+];
+function getNameBeyondPrice(goods, price) {
+  return goods.reduce(function(arr, item) {
+    if (item.price > price)
+      arr.push(item);
+    return arr;
+  }, []).map(function(item) {
+    return item.name;
+  });
+}
+console.log(getNameBeyondPrice(cart, 20000)); //  { name: 'imac', price: 25000 }
+/* 数组去重 */
+arr = [1, 2, 3, 3, 1, 4, 2];
+let newArr = arr.reduce(function(arr, item) {
+  // 注意。如果数组里的是对象，则不能用includes()，只能用find()！
+  if (!arr.includes(item)) {
+    arr.push(item);
+  }
+  return arr;
+}, []);
+console.table(newArr); //  [1, 2, 3, 4]
 
 /*=========================5. some=========================*/
 /* 使用 */
@@ -141,7 +192,7 @@ function mySome(callback) {
 
 /*=========================6. reduce归纳=========================*/
 /* 使用 */
-let initialValue = 0;
+initialValue = 0;
 // prev就是初始值
 newArray = arr.reduce(function (prev, item, index, array) {
   prev += item;
