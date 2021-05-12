@@ -5,34 +5,32 @@ import './index.css'
 
 export default class Header extends Component {
 
-	//对接收的props进行：类型、必要性的限制
 	static propTypes = {
-		addTodo:PropTypes.func.isRequired
+		addTodo: PropTypes.func.isRequired
 	}
 
-	//键盘事件的回调
+	// callback of keyboard events
 	handleKeyUp = (event)=>{
-		//解构赋值获取keyCode,target
 		const {keyCode,target} = event
-		//判断是否是回车按键
+		// judge if "space" is pressed
 		if(keyCode !== 13) return
-		//添加的todo名字不能为空
+		// added "to-do" item must have a name
 		if(target.value.trim() === ''){
-			alert('输入不能为空')
+			alert('Input should not be empty!')
 			return
 		}
-		//准备好一个todo对象
-		const todoObj = {id:nanoid(),name:target.value,done:false}
-		//将todoObj传递给App
+		// prepare a "to-do" object
+		const todoObj = {id: nanoid(), name: target.value, done: false}
+		// pass todoObj to App
 		this.props.addTodo(todoObj)
-		//清空输入
+		// clear inputs
 		target.value = ''
 	}
 
 	render() {
 		return (
 			<div className="todo-header">
-				<input onKeyUp={this.handleKeyUp} type="text" placeholder="请输入你的任务名称，按回车键确认"/>
+				<input onKeyUp={this.handleKeyUp} type="text" placeholder="Please input your task name，and press Enter to confirm"/>
 			</div>
 		)
 	}
