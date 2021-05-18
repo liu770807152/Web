@@ -2,9 +2,9 @@ const express = require('express')
 const app = express()
 
 app.use((request,response,next)=>{
-	console.log('有人请求服务器1了');
-	console.log('请求来自于',request.get('Host'));
-	console.log('请求的地址',request.url);
+	console.log('Someone requested server 1!');
+	console.log('Request is from: ',request.get('Host'));
+	console.log('Request address is: ',request.url);
 	next()
 })
 
@@ -18,5 +18,5 @@ app.get('/students',(request,response)=>{
 })
 
 app.listen(5000,(err)=>{
-	if(!err) console.log('服务器1启动成功了,请求学生信息地址为：http://localhost:5000/students');
+	if(!err) console.log('Server 1 successfully launched. Server address is：http://localhost:5000/students');
 })
