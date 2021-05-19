@@ -8,7 +8,7 @@ export default class index extends Component {
         <div className="card">
           <a href="https://github.com/reactjs" target="_blank" rel="noreferrer">
             <img
-              src="https://avatars.githubusercontent.com/u/6412038?v=3"
+              src="https://www.kazoart.com/blog/wp-content/uploads/2017/05/jeune-fille-perle-vermeer.jpg"
               alt="portrait1"
               style={{ width: "100px" }}
             />
@@ -18,7 +18,7 @@ export default class index extends Component {
         <div className="card">
           <a href="https://github.com/reactjs" target="_blank" rel="noreferrer">
             <img
-              src="https://avatars.githubusercontent.com/u/6412038?v=3"
+              src="https://www.kazoart.com/blog/wp-content/uploads/2017/05/jeune-fille-perle-vermeer.jpg"
               alt="portrait2"
               style={{ width: "100px" }}
             />
@@ -28,7 +28,7 @@ export default class index extends Component {
         <div className="card">
           <a href="https://github.com/reactjs" target="_blank" rel="noreferrer">
             <img
-              src="https://avatars.githubusercontent.com/u/6412038?v=3"
+              src="https://www.kazoart.com/blog/wp-content/uploads/2017/05/jeune-fille-perle-vermeer.jpg"
               alt="portrait3"
               style={{ width: "100px" }}
             />
@@ -38,7 +38,7 @@ export default class index extends Component {
         <div className="card">
           <a href="https://github.com/reactjs" target="_blank" rel="noreferrer">
             <img
-              src="https://avatars.githubusercontent.com/u/6412038?v=3"
+              src="https://www.kazoart.com/blog/wp-content/uploads/2017/05/jeune-fille-perle-vermeer.jpg"
               alt="portrait3"
               style={{ width: "100px" }}
             />
@@ -48,7 +48,7 @@ export default class index extends Component {
         <div className="card">
           <a href="https://github.com/reactjs" target="_blank" rel="noreferrer">
             <img
-              src="https://avatars.githubusercontent.com/u/6412038?v=3"
+              src="https://www.kazoart.com/blog/wp-content/uploads/2017/05/jeune-fille-perle-vermeer.jpg"
               alt="portrait4"
               style={{ width: "100px" }}
             />
