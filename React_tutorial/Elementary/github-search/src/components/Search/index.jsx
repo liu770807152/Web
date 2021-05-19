@@ -7,10 +7,10 @@ export default class index extends Component {
     // continuous destructuring assignment + rename variable
     const { keywordElement: { value: name } } = this;
     axios.get(`/api/search/users?q=${name}`).then(res => {
-      console.log(res.data);
+      this.props.saveUsers(res.data.items);
     }, err => {
       console.error(err);
-    })
+    });
   }
 
   render() {

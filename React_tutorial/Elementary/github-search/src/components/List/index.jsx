@@ -3,58 +3,25 @@ import './index.css';
 
 export default class index extends Component {
   render() {
+    const { users } = this.props;
     return (
       <div className="row">
-        <div className="card">
-          <a href="https://github.com/reactjs" target="_blank" rel="noreferrer">
-            <img
-              src="https://www.kazoart.com/blog/wp-content/uploads/2017/05/jeune-fille-perle-vermeer.jpg"
-              alt="portrait1"
-              style={{ width: "100px" }}
-            />
-          </a>
-          <p className="card-text">reactjs</p>
-        </div>
-        <div className="card">
-          <a href="https://github.com/reactjs" target="_blank" rel="noreferrer">
-            <img
-              src="https://www.kazoart.com/blog/wp-content/uploads/2017/05/jeune-fille-perle-vermeer.jpg"
-              alt="portrait2"
-              style={{ width: "100px" }}
-            />
-          </a>
-          <p className="card-text">reactjs</p>
-        </div>
-        <div className="card">
-          <a href="https://github.com/reactjs" target="_blank" rel="noreferrer">
-            <img
-              src="https://www.kazoart.com/blog/wp-content/uploads/2017/05/jeune-fille-perle-vermeer.jpg"
-              alt="portrait3"
-              style={{ width: "100px" }}
-            />
-          </a>
-          <p className="card-text">reactjs</p>
-        </div>
-        <div className="card">
-          <a href="https://github.com/reactjs" target="_blank" rel="noreferrer">
-            <img
-              src="https://www.kazoart.com/blog/wp-content/uploads/2017/05/jeune-fille-perle-vermeer.jpg"
-              alt="portrait3"
-              style={{ width: "100px" }}
-            />
-          </a>
-          <p className="card-text">reactjs</p>
-        </div>
-        <div className="card">
-          <a href="https://github.com/reactjs" target="_blank" rel="noreferrer">
-            <img
-              src="https://www.kazoart.com/blog/wp-content/uploads/2017/05/jeune-fille-perle-vermeer.jpg"
-              alt="portrait4"
-              style={{ width: "100px" }}
-            />
-          </a>
-          <p className="card-text">reactjs</p>
-        </div>
+        {
+         users.map((user) => {
+           return (
+            <div key={user.id} className="card">
+              <a href={user.html_url} target="_blank" rel="noreferrer">
+                <img
+                  src={user.avatar_url}
+                  alt="avatar"
+                  style={{ width: '100px' }}
+                />
+              </a>
+              <p className="card-text">{user.login}</p>
+            </div>
+           );
+         })
+        }
       </div>
     );
   }
