@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import './index.css';
 import axios from 'axios';
 
-export default class index extends Component {
+export default class Search extends Component {
 
   search = () => {
     // continuous destructuring assignment + rename variable

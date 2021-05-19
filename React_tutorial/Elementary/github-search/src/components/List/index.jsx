@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import './index.css';
 
-export default class index extends Component {
+export default class List extends Component {
   render() {
     const { users, isFirst, isLoading, err } = this.props;
     return (
