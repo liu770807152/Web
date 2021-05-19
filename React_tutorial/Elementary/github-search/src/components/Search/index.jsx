@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import './index.css';
 import axios from 'axios';
 
 export default class index extends Component {
@@ -6,10 +7,13 @@ export default class index extends Component {
   search = () => {
     // continuous destructuring assignment + rename variable
     const { keywordElement: { value: name } } = this;
+    // update state before sending the request
+    this.props.updateAppState({ isFirst: false, isLoading: true });
+    // send the request
     axios.get(`/api/search/users?q=${name}`).then(res => {
-      this.props.saveUsers(res.data.items);
+      this.props.updateAppState({ isLoading: false, users: res.data.items });
     }, err => {
-      console.error(err);
+      this.props.updateAppState({ isLoading: false, err: err.message });
     });
   }
 

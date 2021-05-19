@@ -3,11 +3,14 @@ import './index.css';
 
 export default class index extends Component {
   render() {
-    const { users } = this.props;
+    const { users, isFirst, isLoading, err } = this.props;
     return (
       <div className="row">
         {
-         users.map((user) => {
+          isFirst ? <h2>Welcome!</h2> : 
+          isLoading ? <h2>Loading...</h2> : 
+          err ? <h2 style={{color: 'red'}}>{err}</h2> :
+          users.map((user) => {
            return (
             <div key={user.id} className="card">
               <a href={user.html_url} target="_blank" rel="noreferrer">
