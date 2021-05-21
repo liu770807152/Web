@@ -1,7 +1,8 @@
-import { Link, Route } from "react-router-dom";
+import { Link, NavLink, Route } from "react-router-dom";
 import Home from "./pages/Home"; // router component
 import About from "./pages/About";
 import Header from './components/Header'; // general component
+import MyNavLink from './components/MyNavLink';
 
 function App() {
   return (
@@ -19,13 +20,18 @@ function App() {
               Home
             </a> */}
 
-            {/* React uses Link to switch between different components */}
-            <Link className="list-group-item" to="/about">
+            {/* React uses Link/NavLink to switch between different components */}
+            {/* className changes to "list-group-item clicked" after being clicked */}
+            {/* <NavLink activeClassName="clicked" className="list-group-item" to="/about">
               About
-            </Link>
-            <Link className="list-group-item" to="/home">
+            </NavLink>
+            <NavLink className="list-group-item" to="/home">
               Home
-            </Link>
+            </NavLink> */}
+
+            {/* Encapsulate all NavLink to MyNavLink */}
+            <MyNavLink to="/about">About</MyNavLink>
+            <MyNavLink to="/home">Home</MyNavLink>
           </div>
         </div>
         <div className="col-xs-6">
