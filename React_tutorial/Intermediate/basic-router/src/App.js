@@ -1,17 +1,12 @@
 import { Link, Route } from "react-router-dom";
-import Home from "./components/Home";
-import About from "./components/About";
+import Home from "./pages/Home"; // router component
+import About from "./pages/About";
+import Header from './components/Header'; // general component
 
 function App() {
   return (
     <div>
-      <div className="row">
-        <div className="col-xs-offset-2 col-xs-8">
-          <div className="page-header">
-            <h2>React Router Demo</h2>
-          </div>
-        </div>
-      </div>
+      <Header />
       {/* <BrowserRouter> */}
       <div className="row">
         <div className="col-xs-2 col-xs-offset-2">
@@ -25,7 +20,6 @@ function App() {
             </a> */}
 
             {/* React uses Link to switch between different components */}
-
             <Link className="list-group-item" to="/about">
               About
             </Link>
@@ -38,7 +32,6 @@ function App() {
           <div className="panel">
             <div className="panel-body">
               {/* React also registers Route to render component according to the current path */}
-
               <Route path="/about" component={About} />
               <Route path="/home" component={Home} />
             </div>
