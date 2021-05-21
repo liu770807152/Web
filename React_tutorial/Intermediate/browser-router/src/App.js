@@ -1,4 +1,4 @@
-import { Link, NavLink, Route } from "react-router-dom";
+import { Link, NavLink, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home"; // router component
 import About from "./pages/About";
 import Header from './components/Header'; // general component
@@ -30,16 +30,19 @@ function App() {
             </NavLink> */}
 
             {/* Encapsulate all NavLink to MyNavLink */}
-            <MyNavLink to="/about">About</MyNavLink>
-            <MyNavLink to="/home">Home</MyNavLink>
+            <MyNavLink to="/firstdomain/about">About</MyNavLink>
+            <MyNavLink to="/firstdomain/home">Home</MyNavLink>
           </div>
         </div>
         <div className="col-xs-6">
           <div className="panel">
             <div className="panel-body">
               {/* React also registers Route to render component according to the current path */}
-              <Route path="/about" component={About} />
-              <Route path="/home" component={Home} />
+              {/* Use Switch to enhance matching efficiency */}
+              <Switch>
+                <Route path="/firstdomain/about" component={About} />
+                <Route path="/firstdomain/home" component={Home} />
+              </Switch>
             </div>
           </div>
         </div>
