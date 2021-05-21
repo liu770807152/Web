@@ -1,0 +1,5 @@
+HashRouter would add a '#' inside the path. Everything after '#' will all be considered as front-end resources, and therefore won't be sent to back-end server.
+This feature could be used to fix a problem of style lost:
+When the router path is multi-level, stylesheet library in public folder could be lost when refreshing the page!
+Consequently, React will render public/index.html with no style at all instead.
+To fix this issue, we can 1) change the relative path in public/index.html to absolute path, or 2) use HashRouter instead.
