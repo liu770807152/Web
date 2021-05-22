@@ -3,7 +3,6 @@ import { Link, Route } from 'react-router-dom';
 import Detail from './Detail';
 
 export default class Message extends Component {
-
   state = {
     messageArr: [
       {
@@ -27,15 +26,17 @@ export default class Message extends Component {
             messageArr.map((msg) => {
               return (
                 <li key={msg.id}>
-                  <Link to="/home/message/detail">{msg.title}</Link>
+                  {/* pass params to Route component */}
+                  <Link to={`/home/message/detail/${msg.id}/${msg.title}`}>{msg.title}</Link>
                 </li>
               )
             })
           }
         </ul>
         <hr />
-        <Route path="/home/message/detail" component={Detail} />
+        {/* Receive params in Route */}
+        <Route path="/home/message/detail/:id/:title" component={Detail} />
       </div>
-    );
+    )
   }
 }
