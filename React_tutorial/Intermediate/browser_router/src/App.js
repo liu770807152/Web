@@ -37,7 +37,7 @@ function App() {
         <div className="col-xs-6">
           <div className="panel">
             <div className="panel-body">
-              {/* React also registers Route to render component according to the current path */}
+              {/* Route also matches the path with the registered path to render component */}
               {/* Use Switch to enhance matching efficiency */}
               <Switch>
                 <Route path="/firstdomain/about" component={About} />
