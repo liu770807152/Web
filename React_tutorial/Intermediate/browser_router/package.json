@@ -1,5 +1,5 @@
 {
-  "name": "basic-router",
+  "name": "basic_router",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
