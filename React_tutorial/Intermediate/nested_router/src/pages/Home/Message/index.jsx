@@ -27,7 +27,10 @@ export default class Message extends Component {
               return (
                 <li key={msg.id}>
                   {/* pass params to Route component */}
-                  <Link to={`/home/message/detail/${msg.id}/${msg.title}`}>{msg.title}</Link>
+                  {/* <Link to={`/home/message/detail/${msg.id}/${msg.title}`}>{msg.title}</Link> */}
+                  
+                  {/* pass search to Route component */}
+                  <Link to={`/home/message/detail/?id=${msg.id}&title=${msg.title}`}>{msg.title}</Link>
                 </li>
               )
             })
@@ -35,7 +38,9 @@ export default class Message extends Component {
         </ul>
         <hr />
         {/* Receive params in Route */}
-        <Route path="/home/message/detail/:id/:title" component={Detail} />
+        {/* <Route path="/home/message/detail/:id/:title" component={Detail} /> */}
+        {/* Receive search in Route (do nothing!) */}
+        <Route path="/home/message/detail" component={Detail} />
       </div>
     )
   }
