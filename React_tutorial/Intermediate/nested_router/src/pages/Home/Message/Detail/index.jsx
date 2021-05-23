@@ -14,12 +14,15 @@ export default class Detail extends Component {
 		// const { id, title } = this.props.match.params;
 
 		// receive search (resembles query params)
-		const { search } = this.props.location;
+		// const { search } = this.props.location;
 		// slice(1) remove '?' at the beginning
-		const { id, title } = qs.parse(search.slice(1));
+		// const { id, title } = qs.parse(search.slice(1));
+
+		// receive state
+		const { id, title } = this.props.location.state || {}
 		const findContent = detailData.find((detailObj) => {
 			return detailObj.id === id;
-		})
+		}) || {};
 		return (
 			<ul>
 				<li>ID: {id}</li>

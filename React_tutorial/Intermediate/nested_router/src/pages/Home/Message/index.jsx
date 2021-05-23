@@ -20,28 +20,40 @@ export default class Message extends Component {
   render() {
     const { messageArr } = this.state;
     return (
-      <div>
+      <>
         <ul>
           {
             messageArr.map((msg) => {
+              const id = msg.id, title = msg.title;
               return (
-                <li key={msg.id}>
+                <li key={id}>
                   {/* pass params to Route component */}
                   {/* <Link to={`/home/message/detail/${msg.id}/${msg.title}`}>{msg.title}</Link> */}
-                  
+
                   {/* pass search to Route component */}
-                  <Link to={`/home/message/detail/?id=${msg.id}&title=${msg.title}`}>{msg.title}</Link>
+                  {/* <Link to={`/home/message/detail/?id=${msg.id}&title=${msg.title}`}>{msg.title}</Link> */}
+
+                  {/* pass state to Route component */}
+                  <Link
+                    to={{
+                      pathname: '/home/message/detail',
+                      state: { id, title }
+                    }}
+                  >
+                    {title}
+                  </Link>
                 </li>
-              )
+              );
             })
           }
         </ul>
         <hr />
         {/* Receive params in Route */}
         {/* <Route path="/home/message/detail/:id/:title" component={Detail} /> */}
-        {/* Receive search in Route (do nothing!) */}
+
+        {/* Receive search or state in Route (do nothing!) */}
         <Route path="/home/message/detail" component={Detail} />
-      </div>
+      </>
     )
   }
 }
