@@ -33,6 +33,19 @@ export default class Message extends Component {
     this.props.history.replace(`/home/message/detail/${id}/${title}`);
   }
 
+  goForward = () => {
+    this.props.history.goForward();
+  }
+
+  goBack = () => {
+    this.props.history.goBack();
+  }
+
+  go = () => {
+    // goBackward twice
+    this.props.history.go(-2);
+  }
+
   render() {
     const { messageArr } = this.state;
     return (
@@ -76,6 +89,10 @@ export default class Message extends Component {
 
         {/* Receive search or state in Route (do nothing!) */}
         {/* <Route path="/home/message/detail" component={Detail} /> */}
+
+        <button onClick={this.goForward}>Forward</button>&nbsp;
+        <button onClick={this.goBack}>Backward</button>&nbsp;
+        <button onClick={this.go}>GoBackTwice</button>
       </>
     )
   }
