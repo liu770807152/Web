@@ -1,10 +1,8 @@
 // serialization, de-serialization
-// <> <>
-// { key: value  } -> <>key:value<>
+// { key: value } <-> "key:value"
 
 
 // GET, POST, PUT, DELETE -> http methods
-// 
 
 // 1. versioning
 // api.domain.com/v1/
