@@ -35,6 +35,7 @@ export default class Message extends Component {
 
                   {/* pass state to Route component */}
                   <Link
+                    replace={true}
                     to={{
                       pathname: '/home/message/detail',
                       state: { id, title }
