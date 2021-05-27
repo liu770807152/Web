@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // introduce store for getting the states in Redux
 import store from '../../Redux/store';
 // introduce action creator
-import { createIncrementAction, createDecrementAction, createIncrementAsyncAction } from '../../Redux/count_creator';
+import { createIncrementAction, createDecrementAction, createIncrementAsyncAction } from '../../Redux/count_action';
 
 export default class Count extends Component {
   // state = {
