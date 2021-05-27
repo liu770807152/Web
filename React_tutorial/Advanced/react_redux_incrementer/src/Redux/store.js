@@ -5,7 +5,7 @@
 // introduce createStore & applyMiddleware for creating the only store in Redux
 import { createStore, applyMiddleware } from 'redux';
 // introduce a reducer for the specific component (App in this demo)
-import countReducer from './count_reducer';
+import countReducer from './reducers/count';
 // introduce redux-thunk for supporting functional actions
 import thunk from 'redux-thunk';
 

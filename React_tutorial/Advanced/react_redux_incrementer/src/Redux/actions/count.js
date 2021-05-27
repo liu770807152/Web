@@ -3,7 +3,7 @@
  * @returns action objects
  */
 // introduce constants of types
-import { INCREMENT, DECREMENT } from "./constant";
+import { INCREMENT, DECREMENT } from "../constant";
 
 // synchronous actions are those returning objects
 function createIncrementAction(data) {

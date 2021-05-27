@@ -4,7 +4,7 @@
  * 1. A reducer is basically a function.
  * 2. The reducer will receive 2 params: 1) previous state; 2) action object
  */
-import { INCREMENT, DECREMENT } from './constant';
+import { INCREMENT, DECREMENT } from '../constant';
 
 const initState = 0;
 

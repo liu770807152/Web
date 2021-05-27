@@ -7,7 +7,10 @@ export default class App extends Component {
   render() {
     return (
       <>
-        <Count store={store}/>
+        {/* pass store to container
+            can be done by Provider in index.js */}
+        {/* <Count store={store}/> */}
+        <Count />
       </>
     )
   }
