@@ -36,8 +36,8 @@ class CountUI extends Component {
 
   incrementIfOdd = () => {
     const { value } = this.selectNumber;
-    const count = this.props.count;
-    count % 2 && this.props.increment(value * 1);
+    const sum = this.props.sum;
+    sum % 2 && this.props.increment(value * 1);
   };
 
   asyncIncrement = () => {
@@ -48,7 +48,8 @@ class CountUI extends Component {
   render() {
     return (
       <div>
-        <h1>Current sum is: {this.props.count}</h1>
+        <h1>Current sum is: {this.props.sum}</h1>
+        <h2>The number of people below is: {this.props.persons.length-1}</h2>
         <select ref={(c) => (this.selectNumber = c)}>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -69,7 +70,10 @@ class CountUI extends Component {
  * @param {*} states in Redux
  * @returns states in Redux as { key: value }
  */
-const mapStateToProps = (state) => ({ count: state });
+const mapStateToProps = (state) => ({ 
+  sum: state.sum,
+  persons: state.persons,
+ });
 
 /**
  * mapDispatchToProps passes the functions to operate states in Redux, no need to use store.dispatch()
