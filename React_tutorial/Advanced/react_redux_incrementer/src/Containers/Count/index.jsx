@@ -4,9 +4,9 @@ import React, { Component } from "react";
 // import connect to connect UI and redux
 import { connect } from "react-redux";
 import {
-  createIncrementAction,
-  createDecrementAction,
-  createIncrementAsyncAction,
+  incrementAction,
+  decrementAction,
+  incrementAsyncAction,
 } from "../../Redux/actions/count";
 
 // define UI
@@ -92,9 +92,9 @@ const mapStateToProps = (state) => ({
 // simpler mapDispatchToProps
 const mapDispatchToProps = {
   // dispatch an action here
-  increment: createIncrementAction,
-  decrement: createDecrementAction,
-  increment_async: createIncrementAsyncAction,
+  increment: incrementAction,
+  decrement: decrementAction,
+  increment_async: incrementAsyncAction,
 };
 
 // create and export a container for Count

@@ -8,6 +8,7 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
+    {/* make all child components in <App/> receive store */}
     <Provider store={store}>
       <App />
     </Provider>
@@ -21,8 +22,8 @@ ReactDOM.render(
 reportWebVitals();
 
 /* 
-for redux: monitor the state changes in Redux and update DOM if changed
-for react-redux: no need to monitor any more. connect() has done it all!
+  for redux: monitor the state changes in Redux and update DOM if changed
+  for react-redux: no need to monitor any more. connect() has done it all!
 */
 // store.subscribe(() => {
 //   ReactDOM.render(

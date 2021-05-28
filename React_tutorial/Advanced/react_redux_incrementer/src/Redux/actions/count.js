@@ -6,30 +6,30 @@
 import { INCREMENT, DECREMENT } from "../constant";
 
 // synchronous actions are those returning objects
-function createIncrementAction(data) {
+function incrementAction(data) {
   return {
     type: INCREMENT,
     data,
   };
 }
 
-const createDecrementAction = (data) => ({
+const decrementAction = (data) => ({
   type: DECREMENT,
   data,
 });
 
 // asynchronous actions are those returning functions
-const createIncrementAsyncAction = (data, time) => {
+const incrementAsyncAction = (data, time) => {
   // store will pass in the store by default!!!
   return (dispatch) => {
     setTimeout(() => {
-      dispatch(createIncrementAction(data));
+      dispatch(incrementAction(data));
     }, time);
   };
 };
 
 export {
-  createIncrementAction,
-  createDecrementAction,
-  createIncrementAsyncAction,
+  incrementAction,
+  decrementAction,
+  incrementAsyncAction,
 };
