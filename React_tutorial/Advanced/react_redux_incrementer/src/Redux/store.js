@@ -9,6 +9,8 @@ import countReducer from './reducers/count';
 import personReducer from './reducers/person';
 // introduce redux-thunk for supporting functional actions
 import thunk from 'redux-thunk';
+// introduce redux devtools for visualization
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 const allReducers = combineReducers({
   sum: countReducer,
@@ -16,4 +18,4 @@ const allReducers = combineReducers({
 })
 
 // applyMiddleware must be the 2nd param
-export default createStore(allReducers, applyMiddleware(thunk));
+export default createStore(allReducers, composeWithDevTools(applyMiddleware(thunk)));
