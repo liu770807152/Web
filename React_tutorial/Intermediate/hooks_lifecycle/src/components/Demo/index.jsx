@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-//类式组件
+// class component
 /* class Demo extends React.Component {
 
 	state = { count: 0 }
@@ -80,9 +80,9 @@ function Demo(){
 		<div>
 			<input type="text" ref={myRef}/>
 			<h2>当前求和为：{count}</h2>
-			<button onClick={add}>点我+1</button>
-			<button onClick={unmount}>卸载组件</button>
-			<button onClick={show}>点我提示数据</button>
+			<button onClick={add}>add 1</button>
+			<button onClick={unmount}>unmount root</button>
+			<button onClick={show}>show indication</button>
 		</div>
 	)
 }
