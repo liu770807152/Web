@@ -5,9 +5,10 @@ let server = http.createServer();
 
 server.on('request', (req, res) => {
   // console.log(req.url/req.headers);
+  res.setHeader('Content-Type', 'text/html');
   if (req.url === '/') {
     // response data must be string or byte!!!
-    res.end('Hello!');
+    res.end('<h1>Hello!</h1>');
   } else {
     res.end(JSON.stringify(['To be done.']));
   }
