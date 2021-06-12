@@ -148,6 +148,12 @@ app.use((err, req, res, next) => {
 	});
 });
 
+// add a middleware handling 404
+// usually 404 middleware is placed at the end of all other middleware
+app.use((req, res, next) => {
+  res.status(404).send('404 not found.');
+});
+
 app.listen(3000, () => {
   console.log("server running at http://localhost:3000/");
 });
