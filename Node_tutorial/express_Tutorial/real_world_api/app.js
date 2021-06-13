@@ -7,6 +7,7 @@ const morgan = require('morgan');
 const cors = require('cors');
 const router = require('./router');
 const errorHandler = require('./middleware/error-handler');
+require('./model');
 
 const PORT = process.env.PORT || 3000;
 
