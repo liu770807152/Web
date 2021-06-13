@@ -3,10 +3,12 @@ const userCtrl = require('../controller/user');
 // const { body, validationResult, check, sanitize, checkSchema } = require('express-validator');
 const userValidator = require('../validator/user');
 
+
 const router = express.Router();
 
 // authentication
-router.post('/users/login', userCtrl.login);
+// if validation is passed, hand in to controller
+router.post('/users/login', userValidator.login, userCtrl.login);
 
 // registration
 // if validation is passed, hand in to controller

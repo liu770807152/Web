@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 		set: value => md5(value), // crypto
-		select: false
+		select: false // omit password for queries
 	},
 	bio: {
 		type: String,
