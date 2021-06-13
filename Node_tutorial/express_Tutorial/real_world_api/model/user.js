@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 // shared data fields
 const baseModel = require('./base-model');
+const md5 = require('../util/md5');
 
 const userSchema = new mongoose.Schema({
 	...baseModel,
@@ -14,7 +15,9 @@ const userSchema = new mongoose.Schema({
 	},
 	password: {
 		type: String,
-		required: true
+		required: true,
+		set: value => md5(value), // crypto
+		select: false
 	},
 	bio: {
 		type: String,
