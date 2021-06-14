@@ -1,3 +1,5 @@
+const { Article } = require('../model');
+
 exports.listArticle = async (req, res, next) => {
 	try {
 		res.send('get /articles');
@@ -18,8 +20,14 @@ exports.feedArticle = async (req, res, next) => {
 
 exports.getArticle = async (req, res, next) => {
 	try {
-		res.send('get /articles/:slug');
-
+		const article = await Article.findById(req.params.articleId)
+			.populate('author'); // "get" query does not need exec()
+		if (!article) {
+			return res.status(404).end();
+		}
+		res.status(200).json({
+			article
+		});
 	} catch (err) {
 		next(err);
 	}
@@ -36,8 +44,14 @@ exports.getCommentFromArticle = async (req, res, next) => {
 
 exports.createArticle = async (req, res, next) => {
 	try {
-		res.send('post /articles');
-
+		const article = new Article(req.body.article);
+		article.author = req.user._id;
+		// "author" in model is still ID, but we can use populate() to find it in User
+		article.populate('author').execPopulate();
+		await article.save();
+		res.status(201).json({
+			article
+		});
 	} catch (err) {
 		next(err);
 	}

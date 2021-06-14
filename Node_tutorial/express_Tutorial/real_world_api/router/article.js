@@ -1,5 +1,7 @@
 const express = require('express');
 const articleCtrl = require('../controller/article');
+const auth = require('../middleware/auth');
+const articleValidator = require('../validator/article');
 
 const router = express.Router();
 
@@ -7,33 +9,33 @@ const router = express.Router();
 router.get('/', articleCtrl.listArticle);
 
 // feed articles
-router.get('/feed', articleCtrl.feedArticle);
+router.get('/feed', auth, articleCtrl.feedArticle);
 
 // get article
-router.get('/:slug', articleCtrl.getArticle);
+router.get('/:articleId', articleValidator.getArticle, articleCtrl.getArticle);
 
 // get comments from an article
-router.get('/:slug/comments', articleCtrl.getCommentFromArticle);
+router.get('/:articleId/comments', articleCtrl.getCommentFromArticle);
 
 // create article
-router.post('/', articleCtrl.createArticle);
+router.post('/', auth, articleValidator.createArticle, articleCtrl.createArticle);
 
 // add comments to an article
-router.post('/:slug/comments', articleCtrl.addCommentToArticle);
+router.post('/:articleId/comments', articleCtrl.addCommentToArticle);
 
 // favorite article
-router.post('/:slug/favorite', articleCtrl.favoriteArticle);
+router.post('/:articleId/favorite', auth, articleCtrl.favoriteArticle);
 
 // update article
-router.put('/:slug', articleCtrl.updateArticle);
+router.put('/:articleId', auth, articleCtrl.updateArticle);
 
 // delete article
-router.delete('/:slug', articleCtrl.deleteArticle);
+router.delete('/:articleId', auth, articleCtrl.deleteArticle);
 
 // delete comment
-router.delete('/:slug/comments/:id', articleCtrl.deleteComment);
+router.delete('/:articleId/comments/:id', auth, articleCtrl.deleteComment);
 
 // unfavorite article
-router.delete('/:slug/favorite', articleCtrl.unfavoriteArticle);
+router.delete('/:articleId/favorite', auth, articleCtrl.unfavoriteArticle);
 
 module.exports = router;

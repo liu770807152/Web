@@ -1,9 +1,10 @@
 const express = require('express');
+const auth = require('../middleware/auth');
 
 const router = express.Router();
 
 // get user profile
-router.get('/:username', async (req, res, next) => {
+router.get('/:username', auth, async (req, res, next) => {
 	try {
 		res.send('get /profiles/:username');
 
@@ -13,7 +14,7 @@ router.get('/:username', async (req, res, next) => {
 });
 
 // follow user
-router.post('/:username/follow', async (req, res, next) => {
+router.post('/:username/follow', auth, async (req, res, next) => {
 	try {
 		res.send('post /profiles/:username/follow');
 
@@ -23,7 +24,7 @@ router.post('/:username/follow', async (req, res, next) => {
 });
 
 // unfollow user
-router.delete('/:username/follow', async (req, res, next) => {
+router.delete('/:username/follow', auth, async (req, res, next) => {
 	try {
 		res.send('delete /profiles/:username/follow');
 
