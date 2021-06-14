@@ -27,10 +27,10 @@ router.post('/:articleId/comments', articleCtrl.addCommentToArticle);
 router.post('/:articleId/favorite', auth, articleCtrl.favoriteArticle);
 
 // update article
-router.put('/:articleId', auth, articleCtrl.updateArticle);
+router.put('/:articleId', auth, articleValidator.updateArticle, articleCtrl.updateArticle);
 
 // delete article
-router.delete('/:articleId', auth, articleCtrl.deleteArticle);
+router.delete('/:articleId', auth, articleValidator.deleteArticle, articleCtrl.deleteArticle);
 
 // delete comment
 router.delete('/:articleId/comments/:id', auth, articleCtrl.deleteComment);

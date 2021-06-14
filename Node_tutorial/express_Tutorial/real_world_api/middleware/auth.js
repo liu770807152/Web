@@ -12,6 +12,7 @@ module.exports = async (req, res, next) => {
 	}
 	try {
 		const decodedToken = await verify(token, jwtSecret);
+		// if verification succeeds, add user info into req!!!
 		req.user = await User.findById(decodedToken.userId);
 		next();
 	} catch (err) {
